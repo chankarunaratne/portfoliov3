@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>(dev) Chan - Product Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  </head>
+  <body>
+    <canvas id="skyCanvas"></canvas>
+
+    <div class="home">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="navbar-background"></div>
+        <div class="navbar-content">
+          <div class="logo-section">
+            <a href="#" class="logo-link">
+              <img src="assets/logo.png" alt="Chan" class="logo-image" />
+            </a>
+          </div>
+          <div class="nav-links">
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">My Products</a>
+          </div>
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <img src="assets/menu.svg" alt="Menu" width="24" height="24" />
+          </button>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay">
+          <div class="mobile-nav-links">
+            <a href="#" class="mobile-nav-link">About</a>
+            <a href="#" class="mobile-nav-link">My Products</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Animated cloud layer (background within intro stack) -->
+
+      <div class="intro-stack">
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="hero-content">
+            <div class="hero-text">
+              <h1 class="hero-title">
+                G'day, It's Chan—I'm a
+                <span class="highlighted-text">product designer</span> and
+                <span class="highlighted-text">AI-powered developer</span>
+                based in Australia.
+              </h1>
+            </div>
+            <div class="hero-body">
+              <p class="body-text">
+                I primarily help early stage products go from 0 to 1 using
+                product strategy, interface design and design systems.
+              </p>
+              <p class="body-text">
+                I’m a maker at heart, currently building ideas with AI.
+                <span class="highlight-text">See what I'm building.</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Video Intro Section -->
+        <section class="video-intro">
+          <div class="video-content">
+            <div class="video-thumbnail" role="button" tabindex="0"></div>
+            <div class="video-info">
+              <div class="video-text">
+                <h3 class="video-title">Watch a quick video intro</h3>
+                <p class="video-description">
+                  Watch me introduce myself in about 3 mins
+                </p>
+              </div>
+              <button class="watch-btn">Watch intro</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Video Modal -->
+        <div id="video-modal" class="video-modal" style="display: none">
+          <div class="video-modal-overlay"></div>
+          <div class="video-modal-content">
+            <button class="video-modal-close" aria-label="Close video">
+              &times;
+            </button>
+            <div class="video-modal-container">
+              <div id="loom-embed-container"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Showcase Modal -->
+        <div id="showcase-modal" class="showcase-modal" style="display: none">
+          <div class="showcase-modal-overlay"></div>
+          <div class="showcase-modal-content">
+            <button class="showcase-modal-close" aria-label="Close showcase">
+              &times;
+            </button>
+            <div class="showcase-modal-container">
+              <div class="showcase-intro">
+                <div class="showcase-logo"></div>
+                <div class="showcase-info">
+                  <h3 class="showcase-company" id="showcase-company-name">
+                    Docswell
+                  </h3>
+                  <p class="showcase-role" id="showcase-role">
+                    Product designer
+                  </p>
+                </div>
+              </div>
+              <div class="showcase-content">
+                <div class="showcase-text-container">
+                  <h2 class="showcase-title" id="showcase-title"></h2>
+                  <p class="showcase-description" id="showcase-description"></p>
+                </div>
+                <p class="showcase-more-content">More content to come below</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Showcase Modal -->
+        <div id="showcase-modal" class="showcase-modal" style="display: none">
+          <div class="showcase-modal-overlay"></div>
+          <div class="showcase-modal-content">
+            <button class="showcase-modal-close" aria-label="Close showcase">
+              &times;
+            </button>
+            <div class="showcase-modal-container">
+              <div class="showcase-intro">
+                <div class="showcase-logo"></div>
+                <div class="showcase-info">
+                  <h3 class="showcase-company" id="showcase-company-name">
+                    Docswell
+                  </h3>
+                  <p class="showcase-role" id="showcase-role">
+                    Product designer
+                  </p>
+                </div>
+              </div>
+              <div class="showcase-content">
+                <div class="showcase-text-container">
+                  <h2 class="showcase-title" id="showcase-title"></h2>
+                  <p class="showcase-description" id="showcase-description"></p>
+                </div>
+                <p class="showcase-more-content">More content to come below</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Studies Section -->
+        <section class="case-studies">
+          <div class="cards-container">
+            <div class="case-card" data-showcase="docswell">
+              <div class="card-info">
+                <p class="card-role">Product Designer</p>
+                <div class="card-logo"></div>
+              </div>
+              <div class="card-link">
+                <h3 class="card-title">Docswell</h3>
+                <p class="card-cta">Open showcase</p>
+              </div>
+            </div>
+            <div class="case-card" data-showcase="jiffy">
+              <div class="card-info">
+                <p class="card-role">Founding Designer</p>
+                <div class="card-logo"></div>
+              </div>
+              <div class="card-link">
+                <h3 class="card-title">Jiffy</h3>
+                <p class="card-cta">Open showcase</p>
+              </div>
+            </div>
+            <div class="case-card" data-showcase="hiomi">
+              <div class="card-info">
+                <p class="card-role">Product Designer</p>
+                <div class="card-logo"></div>
+              </div>
+              <div class="card-link">
+                <h3 class="card-title">Hiomi</h3>
+                <p class="card-cta">Open showcase</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- More Work Section -->
+      <section class="more-work">
+        <div class="more-work-content">
+          <div class="more-work-text">
+            <h2 class="more-work-title">More work</h2>
+            <p class="more-work-description">
+              Some more client work and concepts I've cooked in my free time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Other Work Section -->
+      <section class="other-work-section">
+        <div class="other-work-container">
+          <div class="other-work-item">
+            <img
+              src="assets/other-work-1.png"
+              alt="Other work 1"
+              class="other-work-img"
+              data-image-popup="assets/other-work-1.png"
+            />
+          </div>
+          <div class="other-work-item">
+            <img
+              src="assets/other-work-2.png"
+              alt="Other work 2"
+              class="other-work-img"
+              data-image-popup="assets/other-work-2.png"
+            />
+          </div>
+          <div class="other-work-item">
+            <img
+              src="assets/other-work-3.png"
+              alt="Other work 3"
+              class="other-work-img"
+              data-image-popup="assets/other-work-3.png"
+            />
+          </div>
+          <div class="other-work-item">
+            <img
+              src="assets/other-work-4.png"
+              alt="Other work 4"
+              class="other-work-img"
+              data-image-popup="assets/other-work-4.png"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Image Popup Modal -->
+      <div
+        id="image-popup-modal"
+        class="image-popup-modal"
+        style="display: none"
+      >
+        <div class="image-popup-overlay"></div>
+        <div class="image-popup-content">
+          <button class="image-popup-close" aria-label="Close image popup">
+            &times;
+          </button>
+          <div class="image-popup-container">
+            <img id="popup-image" src="" alt="" class="popup-image" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Writing Section -->
+      <section class="writing-section">
+        <div class="writing-content">
+          <div class="writing-text">
+            <h2 class="writing-title">Writing</h2>
+            <p class="writing-description">
+              I write about product and design to more than 500 followers on
+              Medium
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Articles Section -->
+      <section class="articles-section">
+        <div class="articles-content">
+          <div class="article-item">
+            <div class="article-text">
+              <h3 class="article-title">
+                Discover the Essentials of User-Centered Design
+              </h3>
+              <p class="article-read-time">5 min</p>
+            </div>
+            <button class="read-article-btn">Read article</button>
+          </div>
+          <hr class="article-divider" />
+          <div class="article-item">
+            <div class="article-text">
+              <h3 class="article-title">
+                Exploring the Future of Product Innovation
+              </h3>
+              <p class="article-read-time">4 min</p>
+            </div>
+            <button class="read-article-btn">Read article</button>
+          </div>
+          <hr class="article-divider" />
+          <div class="article-item">
+            <div class="article-text">
+              <h3 class="article-title">
+                Crafting Seamless User Experiences in Digital Products
+              </h3>
+              <p class="article-read-time">4 min</p>
+            </div>
+            <button class="read-article-btn">Read article</button>
+          </div>
+          <hr class="article-divider" />
+          <div class="article-item">
+            <div class="article-text">
+              <h3 class="article-title">
+                The Art of Minimalist Design: Less is More
+              </h3>
+              <p class="article-read-time">3 min</p>
+            </div>
+            <button class="read-article-btn">Read article</button>
+          </div>
+          <hr class="article-divider" />
+          <div class="article-item">
+            <div class="article-text">
+              <h3 class="article-title">
+                Mastering the Balance: The Power of Simplicity in Design
+              </h3>
+              <p class="article-read-time">3 min</p>
+            </div>
+            <button class="read-article-btn">Read article</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="testimonials-section">
+        <div class="testimonials-content">
+          <div class="testimonials-text">
+            <h2 class="testimonials-title">Recommendations</h2>
+            <p class="testimonials-description">
+              A few things some of my colleagues said about me
+            </p>
+          </div>
+        </div>
+        <div class="testimonial-cards">
+          <div class="testimonial-card">
+            <div class="testimonial-card-content">
+              <div class="testimonial-profile">
+                <img
+                  src="assets/image-andrew.png"
+                  alt="Andrew"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-author">
+                  <p class="testimonial-name">Andrew McKay</p>
+                  <p class="testimonial-role">
+                    Principal Product Designer @Relume
+                  </p>
+                </div>
+              </div>
+              <div class="testimonial-quote">
+                <p>
+                  "Chandima has been a great addition to my team of designers at
+                  :Different. He is naturally inquisitive and has demonstrated
+                  high level of detail when approaching his work. His UX
+                  research skills are strong and he has a natural charisma that
+                  has made it easy to form relationships with colleagues."
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-card-content">
+              <div class="testimonial-profile">
+                <img
+                  src="assets/image-vishwa.png"
+                  alt="Vishwa"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-author">
+                  <p class="testimonial-name">Vishwa Perera</p>
+                  <p class="testimonial-role">Design Consultant @OwasLo</p>
+                </div>
+              </div>
+              <div class="testimonial-quote">
+                <p>
+                  "It was a pleasure working with Chandima on the product design
+                  team where we were constantly brain milked to find the most
+                  suitable answers to mind-tangling problems. Despite being a
+                  part of a team where the product manager was constantly
+                  switched, Chandima showed how great he is at adapting to the
+                  situation and working through the storm."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final Illustration Section -->
+      <section class="final-illustration-section">
+        <img
+          src="assets/final-illustration.png"
+          alt="Final Illustration"
+          class="final-illustration-img"
+        />
+      </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+      <div class="footer-content">
+        <p class="footer-thankyou">Thank you for reading</p>
+        <p class="footer-credit">
+          this website was designed on figma and coded with the help of ai by
+          chandima
+        </p>
+        <nav class="footer-nav">
+          <a href="#" class="footer-link">about</a>
+          <a href="#" class="footer-link">writing</a>
+          <a href="#" class="footer-link">linkedin</a>
+          <a href="#" class="footer-link">contact me</a>
+        </nav>
+        <div class="footer-copyright">© 2025</div>
+      </div>
+    </footer>
+
+    <script src="/sky.js" defer></script>
+    <script src="script-clean.js"></script>
+  </body>
+</html>
