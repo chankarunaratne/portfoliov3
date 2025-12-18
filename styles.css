@@ -1,39 +1,39 @@
 /* PP Neue Montreal Font Faces */
 @font-face {
-  font-family: "PP Neue Montreal";
-  src: url("fonts/PPNeueMontreal-Book.otf") format("opentype");
+  font-family: 'PP Neue Montreal';
+  src: url('fonts/PPNeueMontreal-Book.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "PP Neue Montreal";
-  src: url("fonts/PPNeueMontreal-Medium.otf") format("opentype");
+  font-family: 'PP Neue Montreal';
+  src: url('fonts/PPNeueMontreal-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "PP Neue Montreal";
-  src: url("fonts/PPNeueMontreal-Bold.otf") format("opentype");
+  font-family: 'PP Neue Montreal';
+  src: url('fonts/PPNeueMontreal-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "PP Neue Montreal";
-  src: url("fonts/PPNeueMontreal-Italic.otf") format("opentype");
+  font-family: 'PP Neue Montreal';
+  src: url('fonts/PPNeueMontreal-Italic.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "PP Neue Montreal";
-  src: url("fonts/PPNeueMontreal-Thin.otf") format("opentype");
+  font-family: 'PP Neue Montreal';
+  src: url('fonts/PPNeueMontreal-Thin.otf') format('opentype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -53,8 +53,8 @@ html {
 }
 
 body {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   background-color: var(--bg-white);
   color: var(--text-primary);
   line-height: 1.5;
@@ -230,7 +230,7 @@ body {
 
 /* Top-of-page dreamy sky gradient behind hero (fills initial viewport) */
 .home::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 50%;
@@ -450,8 +450,13 @@ body {
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.6);
   margin: 0;
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Force precise two-line layout for hero title on desktop */
+.hero-line {
+  white-space: nowrap;
 }
 
 .highlighted-text {
@@ -478,7 +483,7 @@ body {
 
 /* Hero lens flare overlay - simulates sunlight hitting the frosted glass from top-right */
 .hero::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: -40% -10% 10% 40%; /* bias towards top-right, extend slightly outside card */
   pointer-events: none;
@@ -516,7 +521,7 @@ body {
 
 /* Global lens flare in intro stack - subtle streaks from top-right "sun" */
 .intro-stack::before {
-  content: "";
+  content: '';
   position: absolute;
   /* Extend well beyond the viewport so there are no visible hard edges */
   top: -40vh;
@@ -541,13 +546,13 @@ body {
       rgba(175, 207, 255, 0) 60%
     ),
     /* Long diagonal cone of light */
-    linear-gradient(
-      225deg,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0.12) 10%,
-      rgba(255, 255, 255, 0.05) 24%,
-      rgba(255, 255, 255, 0) 50%
-    );
+      linear-gradient(
+        225deg,
+        rgba(255, 255, 255, 0.28) 0%,
+        rgba(255, 255, 255, 0.12) 10%,
+        rgba(255, 255, 255, 0.05) 24%,
+        rgba(255, 255, 255, 0) 50%
+      );
   mix-blend-mode: screen;
   opacity: 0.62;
   filter: blur(1.8px);
@@ -558,7 +563,7 @@ body {
 
 /* Additional small circular artifacts along the flare path */
 .intro-stack::after {
-  content: "";
+  content: '';
   position: absolute;
   top: -30vh;
   right: -25vw;
@@ -666,7 +671,7 @@ body {
 .video-thumbnail {
   width: 58px;
   height: 40px;
-  background: url("assets/video-icon.png") center/cover no-repeat;
+  background: url('assets/video-icon.png') center/cover no-repeat;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -933,8 +938,8 @@ body {
 }
 
 .showcase-company {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -943,8 +948,8 @@ body {
 }
 
 .showcase-role {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -965,8 +970,8 @@ body {
 }
 
 .showcase-title {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 32px;
   font-weight: 500;
   line-height: 44px;
@@ -976,8 +981,8 @@ body {
 }
 
 .showcase-description {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
@@ -986,8 +991,8 @@ body {
 }
 
 .showcase-more-content {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1168,7 +1173,7 @@ body {
 }
 
 .card-cta::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 6px;
   height: 6px;
@@ -1195,20 +1200,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
 }
 
-.bento-image {
-  width: 108px;
-  height: 108px;
-  border-radius: 0;
+.more-work-icon {
+  width: 51px;
+  height: 50px;
+  position: relative;
 }
 
-.bento-img {
+.more-work-icon-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0;
+  display: block;
 }
 
 .more-work-text {
@@ -1220,19 +1225,24 @@ body {
 }
 
 .more-work-title {
-  font-size: 16px;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
   line-height: 24px;
   font-weight: 400;
-  color: var(--text-muted);
+  color: #666d80;
+  text-align: center;
   margin: 0;
+  width: 305px;
+  max-width: 100%;
 }
 
-.more-work-description {
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--text-subdued);
-  margin: 0;
-  max-width: 319px;
+.more-work-title-main {
+  color: #36394a;
+}
+
+.more-work-title-secondary {
+  color: #818898;
 }
 
 /* Other Work Section */
@@ -1343,8 +1353,8 @@ body {
 }
 
 .article-title {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
@@ -1353,8 +1363,8 @@ body {
 }
 
 .article-read-time {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400; /* Regular */
   font-size: 14px;
   line-height: 20px;
@@ -1363,8 +1373,8 @@ body {
 }
 
 .read-article-btn {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
@@ -1485,8 +1495,8 @@ body {
 }
 
 .testimonial-name {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1494,16 +1504,16 @@ body {
 }
 
 .testimonial-role {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #666d80;
 }
 
 .testimonial-quote {
-  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   line-height: 28px;
   color: var(--text-normal);
@@ -1548,7 +1558,7 @@ body {
   gap: 24px;
 }
 .footer-thankyou {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -1557,7 +1567,7 @@ body {
   font-weight: 400;
 }
 .footer-credit {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -1574,7 +1584,7 @@ body {
   align-items: center;
 }
 .footer-link {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -1587,7 +1597,7 @@ body {
   color: #36394a;
 }
 .footer-copyright {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -1703,8 +1713,13 @@ body {
     font-size: 28px;
     line-height: 36px;
     letter-spacing: -0.02em;
-    font-family: "PP Neue Montreal", "Inter", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'PP Neue Montreal', 'Inter', -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* Allow wrapping on smaller screens */
+  .hero-line {
+    white-space: normal;
   }
 
   .hero-content {
@@ -1761,7 +1776,7 @@ body {
     border-radius: 12px !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
-    background: url("assets/video-icon.png") center/cover no-repeat !important;
+    background: url('assets/video-icon.png') center/cover no-repeat !important;
     position: relative !important;
     overflow: hidden !important;
     flex-shrink: 0 !important;
