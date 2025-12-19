@@ -434,6 +434,9 @@ body {
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
   position: relative; /* needed for lens flare overlay */
   overflow: hidden; /* keep flare neatly inside rounded corners */
+  /* Force Safari to respect border-radius clipping for animated children */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  isolation: isolate;
 }
 
 .hero-content {
