@@ -1632,6 +1632,19 @@ body {
     padding-top: 0; /* no fixed navbar */
   }
 
+  /* Sky heights for stacked cards on mobile */
+  .intro-stack {
+    min-height: min(220vh, 1500px); /* Taller for vertically stacked cards */
+  }
+
+  #skyCanvas {
+    height: min(230svh, 1600px); /* Match intro-stack fade point */
+  }
+
+  .home::before {
+    height: min(230svh, 1600px); /* Match sky canvas */
+  }
+
   .navbar,
   .hero,
   .video-intro,
