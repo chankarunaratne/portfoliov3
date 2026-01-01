@@ -50,7 +50,8 @@ html {
   width: 100%;
   overflow-x: hidden;
   min-height: 100%;
-  background-color: var(--bg-white);
+  /* Gradient background: Blue at top (overscroll), fading to pure white quickly */
+  background: linear-gradient(180deg, #5BA3D9 0%, #6EB5E5 200px, #ffffff 500px);
 }
 
 /* iOS Safari edge-to-edge: fill the safe area behind the notch with sky color */
@@ -63,7 +64,7 @@ html {
     right: 0;
     height: env(safe-area-inset-top, 0px);
     background: linear-gradient(180deg, #5BA3D9 0%, #6EB5E5 100%);
-    z-index: 0;
+    z-index: 999; /* Ensure it sits above standard content but below navbar */
     pointer-events: none;
   }
 }
