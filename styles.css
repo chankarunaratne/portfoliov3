@@ -49,7 +49,8 @@
 html {
   width: 100%;
   overflow-x: hidden;
-  height: 100%;
+  min-height: 100%;
+  background-color: var(--bg-white);
 }
 
 /* iOS Safari edge-to-edge: fill the safe area behind the notch with sky color */
@@ -70,7 +71,7 @@ html {
 body {
   font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: var(--bg-white);
+  background-color: transparent;
   color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -79,7 +80,7 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  height: 100%;
+  min-height: 100vh;
   position: relative; /* allow #skyCanvas absolute positioning to scroll with page */
 }
 
