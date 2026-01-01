@@ -1696,6 +1696,19 @@ body {
     -webkit-backdrop-filter: saturate(120%) blur(22px) !important;
   }
 
+  /* Remove lens flare effects on mobile only */
+  .hero::before {
+    display: none !important;
+  }
+
+  .intro-stack::before {
+    display: none !important;
+  }
+
+  .intro-stack::after {
+    display: none !important;
+  }
+
   .video-intro {
     margin-bottom: 32px;
     background: rgba(255, 255, 255, 0.035) !important; /* align with cards */
