@@ -1875,8 +1875,8 @@ body {
   }
 
   /* Mobile text adjustments */
-  .body-text {
-    font-size: 18px;
+  .hero .body-text {
+    font-size: 17px;
     line-height: 28px;
   }
 
