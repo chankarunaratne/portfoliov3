@@ -74,10 +74,10 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 148svh; /* slightly shorter so white page begins earlier */
+  height: min(148svh, 1070px); /* Cap height on large screens */
   display: block;
   z-index: -1; /* above gradient (-3), below content */
-  pointer-events: none; /* Don’t block clicks */
+  pointer-events: none; /* Don't block clicks */
   /* Fade out near bottom of viewport to reveal page gradient */
   -webkit-mask-image: linear-gradient(
     to bottom,
@@ -225,7 +225,7 @@ body {
 .intro-stack {
   position: relative;
   z-index: 0;
-  min-height: 130vh; /* Ensure content below starts after gradient end */
+  min-height: min(140vh, 1000px); /* Content + fixed sky padding below cards */
 }
 
 /* Top-of-page dreamy sky gradient behind hero (fills initial viewport) */
@@ -236,7 +236,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  height: 148svh; /* End sky a bit earlier */
+  height: min(148svh, 1070px); /* Cap height on large screens */
   pointer-events: none;
   z-index: -3; /* Behind WebGL sky and all content */
   /* Larger white ramp at the bottom for a smoother transition */
@@ -1195,7 +1195,7 @@ body {
 
 /* More Work Section */
 .more-work {
-  margin: 0 auto 48px;
+  margin: 12px auto 48px;
   max-width: 90%;
 }
 
