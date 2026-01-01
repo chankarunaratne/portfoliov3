@@ -52,6 +52,21 @@ html {
   height: 100%;
 }
 
+/* iOS Safari edge-to-edge: fill the safe area behind the notch with sky color */
+@supports (padding-top: env(safe-area-inset-top)) {
+  html::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-top, 0px);
+    background: linear-gradient(180deg, #5BA3D9 0%, #6EB5E5 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
 body {
   font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -268,7 +283,7 @@ body {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   transition: color 0.3s ease;
-  /* iOS Safari safe area support for edge-to-edge display */
+  /* iOS Safari: push content below the notch/Dynamic Island */
   padding-top: env(safe-area-inset-top, 0px);
 }
 
