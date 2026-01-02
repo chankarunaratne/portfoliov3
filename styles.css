@@ -51,7 +51,7 @@ html {
   overflow-x: hidden;
   min-height: 100%;
   /* Gradient background: Blue at top (overscroll), fading to pure white quickly */
-  background: linear-gradient(180deg, #5BA3D9 0%, #6EB5E5 200px, #ffffff 500px);
+  background: linear-gradient(180deg, #5ba3d9 0%, #6eb5e5 200px, #ffffff 500px);
 }
 
 /* iOS Safari edge-to-edge: fill the safe area behind the notch with sky color */
@@ -63,7 +63,7 @@ html {
     left: 0;
     right: 0;
     height: env(safe-area-inset-top, 0px);
-    background: linear-gradient(180deg, #5BA3D9 0%, #6EB5E5 100%);
+    background: linear-gradient(180deg, #5ba3d9 0%, #6eb5e5 100%);
     z-index: 999; /* Ensure it sits above standard content but below navbar */
     pointer-events: none;
   }
@@ -140,7 +140,7 @@ body {
 .video-intro,
 .case-studies,
 .more-work,
-.other-work-section,
+.more-work-gallery,
 .writing-section,
 .articles-section,
 .testimonials-section,
@@ -1116,13 +1116,13 @@ body {
 
 /* Make images clickable */
 .bento-img,
-.other-work-img {
+.more-work-gallery-img {
   cursor: pointer;
   transition: transform 0.2s ease;
 }
 
 .bento-img:hover,
-.other-work-img:hover {
+.more-work-gallery-img:hover {
   transform: scale(1.02);
 }
 
@@ -1267,27 +1267,27 @@ body {
   color: #818898;
 }
 
-/* Other Work Section */
-.other-work-section {
+/* More Work Gallery Section */
+.more-work-gallery {
   margin: 0 auto 96px;
   width: 720px;
   max-width: 90%;
 }
 
-.other-work-container {
+.more-work-gallery-container {
   display: flex;
   flex-direction: column;
   gap: 32px;
   width: 100%;
 }
 
-.other-work-item {
+.more-work-gallery-item {
   width: 100%;
   aspect-ratio: 2880 / 1792;
   overflow: hidden;
 }
 
-.other-work-img {
+.more-work-gallery-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1673,7 +1673,7 @@ body {
   .video-intro,
   .case-studies,
   .more-work,
-  .other-work-section,
+  .more-work-gallery,
   .writing-section,
   .articles-section,
   .testimonials-section,
@@ -1725,7 +1725,7 @@ body {
     margin-bottom: 32px;
   }
 
-  .other-work-section {
+  .more-work-gallery {
     margin-bottom: 72px;
   }
 

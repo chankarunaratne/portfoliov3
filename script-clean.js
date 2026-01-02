@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { selector: ".video-intro", delay: 700 },
     { selector: ".case-studies", delay: 900 },
     { selector: ".more-work", delay: 1100 },
-    { selector: ".other-work-section", delay: 1300 },
+    { selector: ".more-work-gallery", delay: 1300 },
   ];
 
   // Start sequential animations
