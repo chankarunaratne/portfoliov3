@@ -337,12 +337,172 @@ document.addEventListener("DOMContentLoaded", function () {
     // Show modal
     showcaseModal.style.display = "flex";
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    // Get references to modal elements
+    const showcaseModalContainer = document.querySelector(".showcase-modal-container");
+    
+    // Function to check if event originated from scrollable container
+    const isEventFromScrollableContainer = function(e) {
+      if (!showcaseModalContainer) return false;
+      let target = e.target;
+      
+      // Walk up the DOM tree to check if we're inside the scrollable container
+      while (target && target !== document.body) {
+        if (target === showcaseModalContainer || showcaseModalContainer.contains(target)) {
+          return true;
+        }
+        target = target.parentElement;
+      }
+      return false;
+    };
+
+    // Forward scroll events to popup container when scrolling outside popup
+    const forwardScrollToPopupWheel = function(e) {
+      // If scroll is from the scrollable container, let it handle naturally
+      if (isEventFromScrollableContainer(e)) {
+        return;
+      }
+      
+      // Otherwise, prevent background scroll and forward to popup container
+      if (showcaseModalContainer) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Check boundaries before applying scroll
+        const scrollAmount = e.deltaY;
+        const currentScroll = showcaseModalContainer.scrollTop;
+        const maxScroll = showcaseModalContainer.scrollHeight - showcaseModalContainer.clientHeight;
+        const isAtTop = currentScroll === 0;
+        const isAtBottom = currentScroll >= maxScroll - 1;
+        
+        // Prevent scroll if trying to scroll beyond boundaries
+        if ((isAtTop && scrollAmount < 0) || (isAtBottom && scrollAmount > 0)) {
+          return; // Already at limit, don't scroll
+        }
+        
+        // Apply scroll to the container
+        const newScroll = Math.max(0, Math.min(maxScroll, currentScroll + scrollAmount));
+        showcaseModalContainer.scrollTop = newScroll;
+      }
+    };
+
+    let touchStartY = 0;
+    let touchStartScroll = 0;
+    
+    const forwardScrollToPopupTouchStart = function(e) {
+      if (showcaseModalContainer && e.touches.length === 1) {
+        touchStartY = e.touches[0].clientY;
+        touchStartScroll = showcaseModalContainer.scrollTop;
+      }
+    };
+
+    const forwardScrollToPopupTouchMove = function(e) {
+      // If scroll is from the scrollable container, let it handle naturally
+      if (isEventFromScrollableContainer(e)) {
+        return;
+      }
+      
+      // Otherwise, prevent background scroll and forward to popup container
+      if (showcaseModalContainer && e.touches.length === 1) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const touchY = e.touches[0].clientY;
+        const deltaY = touchStartY - touchY;
+        const currentScroll = showcaseModalContainer.scrollTop;
+        const maxScroll = showcaseModalContainer.scrollHeight - showcaseModalContainer.clientHeight;
+        const newScroll = touchStartScroll + deltaY;
+        
+        // Clamp to boundaries
+        const clampedScroll = Math.max(0, Math.min(maxScroll, newScroll));
+        showcaseModalContainer.scrollTop = clampedScroll;
+      }
+    };
+
+    // Add scroll forwarding to document to catch scrolls anywhere on the page
+    // This ensures scrolling anywhere (overlay, modal, or outside) scrolls the popup
+    document.addEventListener("wheel", forwardScrollToPopupWheel, { passive: false });
+    document.addEventListener("touchstart", forwardScrollToPopupTouchStart, { passive: true });
+    document.addEventListener("touchmove", forwardScrollToPopupTouchMove, { passive: false });
+    
+    // Store document handlers for cleanup
+    document._showcaseScrollHandlers = {
+      wheel: forwardScrollToPopupWheel,
+      touchstart: forwardScrollToPopupTouchStart,
+      touchmove: forwardScrollToPopupTouchMove
+    };
+
+    // Prevent scroll propagation when container reaches limits
+    if (showcaseModalContainer) {
+      let touchStartY = 0;
+      
+      const handleWheel = function(e) {
+        const container = e.currentTarget;
+        const isAtTop = container.scrollTop === 0;
+        const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 1;
+        
+        // Prevent scroll propagation when at limits
+        if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      };
+
+      const handleTouchStart = function(e) {
+        touchStartY = e.touches[0].clientY;
+      };
+
+      const handleTouchMove = function(e) {
+        const container = e.currentTarget;
+        const touchY = e.touches[0].clientY;
+        const deltaY = touchStartY - touchY;
+        const isAtTop = container.scrollTop === 0;
+        const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 1;
+        
+        // Prevent scroll propagation when at limits
+        if ((isAtTop && deltaY < 0) || (isAtBottom && deltaY > 0)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      };
+
+      // Use wheel event for mouse wheel scrolling
+      showcaseModalContainer.addEventListener("wheel", handleWheel, { passive: false });
+      showcaseModalContainer.addEventListener("touchstart", handleTouchStart, { passive: true });
+      showcaseModalContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
+      
+      // Store the handlers so we can remove them later
+      showcaseModalContainer._scrollHandlers = {
+        wheel: handleWheel,
+        touchstart: handleTouchStart,
+        touchmove: handleTouchMove
+      };
+    }
   }
 
   // Function to close showcase modal
   function closeShowcaseModal() {
     showcaseModal.style.display = "none";
     document.body.style.overflow = "auto";
+    document.documentElement.style.overflow = "auto";
+    
+    // Remove scroll event listeners from container
+    const showcaseModalContainer = document.querySelector(".showcase-modal-container");
+    if (showcaseModalContainer && showcaseModalContainer._scrollHandlers) {
+      showcaseModalContainer.removeEventListener("wheel", showcaseModalContainer._scrollHandlers.wheel);
+      showcaseModalContainer.removeEventListener("touchstart", showcaseModalContainer._scrollHandlers.touchstart);
+      showcaseModalContainer.removeEventListener("touchmove", showcaseModalContainer._scrollHandlers.touchmove);
+      showcaseModalContainer._scrollHandlers = null;
+    }
+
+    // Remove document scroll handlers
+    if (document._showcaseScrollHandlers) {
+      document.removeEventListener("wheel", document._showcaseScrollHandlers.wheel);
+      document.removeEventListener("touchstart", document._showcaseScrollHandlers.touchstart);
+      document.removeEventListener("touchmove", document._showcaseScrollHandlers.touchmove);
+      document._showcaseScrollHandlers = null;
+    }
   }
 
   // Case study card click handlers
