@@ -274,39 +274,40 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const showcaseModalClose = document.querySelector(".showcase-modal-close");
 
-  // Showcase data for different projects
-  const showcaseData = {
-    docswell: {
-      company: "Docswell",
-      role: "Product Designer",
-      title: "",
-      description: "",
-    },
-    jiffy: {
-      company: "Jiffy",
-      role: "Founding Designer",
-      title: "",
-      description: "",
-    },
-    hiomi: {
-      company: "Hiomi",
-      role: "Product Designer",
-      title: "",
-      description: "",
-    },
+  // Placeholder showcase data - same content for all cards for now
+  const placeholderShowcaseData = {
+    logo: "", // Placeholder logo URL (empty for now, will show grey placeholder)
+    company: "Docswell",
+    role: "Product Designer",
+    title: "Building a modern documentation platform",
+    subheading: "Creating an intuitive experience for teams to collaborate and share knowledge",
+    description: "This is placeholder content that demonstrates how the showcase popup will look with full content. The design includes a logo, company name, role, heading, subheading, and body text. All showcase cards will display this same content for now."
   };
 
-  // Function to open showcase modal with specific content
+  // Function to open showcase modal with placeholder content
   function openShowcaseModal(showcaseType) {
-    const data = showcaseData[showcaseType];
-    if (!data) return;
+    const data = placeholderShowcaseData;
 
     // Update modal content
+    const logoElement = document.getElementById("showcase-logo");
+    if (data.logo) {
+      // If logo URL provided, create img element
+      logoElement.innerHTML = `<img src="${data.logo}" alt="${data.company} logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" />`;
+    } else {
+      // Show placeholder background (already styled in CSS)
+      logoElement.innerHTML = "";
+    }
+    
     document.getElementById("showcase-company-name").textContent = data.company;
     document.getElementById("showcase-role").textContent = data.role;
     document.getElementById("showcase-title").textContent = data.title;
-    document.getElementById("showcase-description").textContent =
-      data.description;
+    
+    const subheadingElement = document.getElementById("showcase-subheading");
+    if (subheadingElement) {
+      subheadingElement.textContent = data.subheading;
+    }
+    
+    document.getElementById("showcase-description").textContent = data.description;
 
     // Show modal
     showcaseModal.style.display = "flex";
