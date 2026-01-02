@@ -912,8 +912,11 @@ body {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   z-index: 10001;
   animation: slideUp 0.3s ease-out;
-  margin-bottom: 80px;
+  margin-bottom: 24px;
   pointer-events: auto;
+  max-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
 }
 
 .showcase-modal-close {
@@ -944,8 +947,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  max-height: calc(100vh - 184px);
   overflow-y: auto;
+  flex: 1;
 }
 
 .showcase-intro {

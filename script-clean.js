@@ -274,19 +274,43 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const showcaseModalClose = document.querySelector(".showcase-modal-close");
 
-  // Placeholder showcase data - same content for all cards for now
-  const placeholderShowcaseData = {
-    logo: "", // Placeholder logo URL (empty for now, will show grey placeholder)
-    company: "Docswell",
-    role: "Product Designer",
-    title: "Building a modern documentation platform",
-    subheading: "Creating an intuitive experience for teams to collaborate and share knowledge",
-    description: "This is placeholder content that demonstrates how the showcase popup will look with full content. The design includes a logo, company name, role, heading, subheading, and body text. All showcase cards will display this same content for now."
+  // Showcase data for each card
+  const showcaseData = {
+    docswell: {
+      logo: "", // Placeholder logo URL (empty for now, will show grey placeholder)
+      company: "Docswell",
+      role: "Product Designer",
+      title: "Taking Docswell’s MVP to production as the sole designer of the team",
+      subheading: "Overhauled both patient and practitioner portals from the ground up and prepared them for production launch.",
+      description: `
+        <p style="margin-bottom: 20px;">The original appointment booking flow for Docswell, a UK-based medtech startup, was unintuitive and time-consuming. Users — both patients and medical staff — struggled with unclear navigation, redundant form fields, and lack of real-time availability. Feedback from clinics highlighted frequent booking errors and increased support requests.</p>
+        
+        <p style="margin-bottom: 20px;">I was the sole product designer on the project, working closely with the founder and the dev team. I led the UX research, wireframing, high-fidelity prototyping, and supported hand-off to developers. We followed a lean, iterative approach with weekly user testing cycles.</p>
+        
+        <p>We started by mapping out the existing booking journey and conducting quick interviews with 6 clinic staff and 4 patients. The biggest pain points? Too many steps, no calendar visibility, and lack of mobile optimisation.</p>
+      `
+    },
+    rememberly: {
+      logo: "",
+      company: "Rememberly",
+      role: "Founder + Maker",
+      title: "Never forget a moment",
+      subheading: "A personal memory keeper that helps you cherish life's highlights",
+      description: "Content for Rememberly case study coming soon."
+    },
+    jiffyhive: {
+      logo: "",
+      company: "Jiffyhive",
+      role: "Founding Designer",
+      title: "Streamlining freelance workflows",
+      subheading: "All-in-one platform for freelancers to manage projects and payments",
+      description: "Content for Jiffyhive case study coming soon."
+    }
   };
 
-  // Function to open showcase modal with placeholder content
+  // Function to open showcase modal with specific content
   function openShowcaseModal(showcaseType) {
-    const data = placeholderShowcaseData;
+    const data = showcaseData[showcaseType] || showcaseData['docswell']; // Fallback to docswell if type not found
 
     // Update modal content
     const logoElement = document.getElementById("showcase-logo");
@@ -307,7 +331,8 @@ document.addEventListener("DOMContentLoaded", function () {
       subheadingElement.textContent = data.subheading;
     }
     
-    document.getElementById("showcase-description").textContent = data.description;
+    // Use innerHTML to support HTML content in description (paragraphs, etc.)
+    document.getElementById("showcase-description").innerHTML = data.description;
 
     // Show modal
     showcaseModal.style.display = "flex";
