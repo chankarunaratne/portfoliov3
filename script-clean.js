@@ -9,11 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     { selector: ".case-studies", delay: 900 },
     { selector: ".more-work", delay: 1100 },
     { selector: ".other-work-section", delay: 1300 },
-    { selector: ".writing-section", delay: 1500 },
-    { selector: ".articles-section", delay: 1700 },
-    { selector: ".testimonials-section", delay: 1900 },
-    { selector: ".final-illustration-section", delay: 2100 },
-    { selector: ".footer-section", delay: 2300 },
   ];
 
   // Start sequential animations
