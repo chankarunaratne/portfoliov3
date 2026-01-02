@@ -2046,9 +2046,12 @@ body {
 
   /* Mobile showcase modal adjustments (iOS-style bottom sheet) */
   .showcase-modal {
+    /* Increase top breathing room while keeping iOS Safari viewport stability */
+    --showcase-sheet-top-gap: 24px;
     align-items: flex-end !important;
     justify-content: center !important;
     padding: 0 !important;
+    padding-top: calc(var(--showcase-sheet-top-gap) + env(safe-area-inset-top, 0px)) !important;
   }
 
   .showcase-modal-content {
@@ -2057,13 +2060,13 @@ body {
     margin: 0 !important;
     border-radius: 24px 24px 0 0 !important;
     /* Fallback first; overridden below when `dvh` is supported */
-    max-height: calc(100vh - (12px + env(safe-area-inset-top, 0px))) !important;
+    max-height: calc(100vh - (var(--showcase-sheet-top-gap) + env(safe-area-inset-top, 0px))) !important;
     animation: showcaseSheetUp 0.28s ease-out !important;
   }
 
   @supports (height: 100dvh) {
     .showcase-modal-content {
-      max-height: calc(100dvh - (12px + env(safe-area-inset-top, 0px))) !important;
+      max-height: calc(100dvh - (var(--showcase-sheet-top-gap) + env(safe-area-inset-top, 0px))) !important;
     }
   }
 
