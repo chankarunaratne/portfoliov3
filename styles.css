@@ -141,6 +141,7 @@ body {
 .case-studies,
 .more-work,
 .more-work-gallery,
+.my-products-section,
 .writing-section,
 .articles-section,
 .testimonials-section,
@@ -1294,6 +1295,73 @@ body {
   object-position: center;
 }
 
+/* My Products Section */
+.my-products-section {
+  margin: 12px auto 48px;
+  max-width: 90%;
+}
+
+.my-products-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.my-products-icon {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+
+.my-products-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.my-products-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.my-products-title {
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #666d80;
+  text-align: center;
+  margin: 0;
+  width: 353px;
+  max-width: 100%;
+}
+
+.my-products-title-main {
+  color: #36394a;
+}
+
+.my-products-title-secondary {
+  color: #818898;
+}
+
+.my-products-placeholder {
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #818898;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
 /* Writing Section */
 .writing-section {
   margin: 0 auto 48px;
@@ -1674,6 +1742,7 @@ body {
   .case-studies,
   .more-work,
   .more-work-gallery,
+  .my-products-section,
   .writing-section,
   .articles-section,
   .testimonials-section,
@@ -1727,6 +1796,10 @@ body {
 
   .more-work-gallery {
     margin-bottom: 72px;
+  }
+
+  .my-products-section {
+    margin-bottom: 32px;
   }
 
   .writing-section {
