@@ -1729,11 +1729,26 @@ body {
   }
 
   #skyCanvas {
-    height: min(230svh, 1600px); /* Match intro-stack fade point */
+    height: min(240svh, 1700px); /* Extended to go below last showcase card */
+    /* Adjust fade to allow sky to be visible longer */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 96%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 96%,
+      rgba(0, 0, 0, 0) 100%
+    );
   }
 
   .home::before {
-    height: min(230svh, 1600px); /* Match sky canvas */
+    height: min(240svh, 1700px); /* Match sky canvas */
   }
 
   .navbar,
@@ -1800,6 +1815,12 @@ body {
 
   .my-products-section {
     margin-bottom: 32px;
+  }
+
+  .my-products-title {
+    width: 100% !important;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
 
   .writing-section {
