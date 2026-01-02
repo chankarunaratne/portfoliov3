@@ -1729,26 +1729,29 @@ body {
   }
 
   #skyCanvas {
-    height: min(240svh, 1700px); /* Extended to go below last showcase card */
+    height: min(
+      250svh,
+      1800px
+    ); /* Extended further to go well below last showcase card */
     /* Adjust fade to allow sky to be visible longer */
     -webkit-mask-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 1) 85%,
-      rgba(0, 0, 0, 0) 96%,
+      rgba(0, 0, 0, 1) 88%,
+      rgba(0, 0, 0, 0) 97%,
       rgba(0, 0, 0, 0) 100%
     );
     mask-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 1) 85%,
-      rgba(0, 0, 0, 0) 96%,
+      rgba(0, 0, 0, 1) 88%,
+      rgba(0, 0, 0, 0) 97%,
       rgba(0, 0, 0, 0) 100%
     );
   }
 
   .home::before {
-    height: min(240svh, 1700px); /* Match sky canvas */
+    height: min(250svh, 1800px); /* Match sky canvas */
   }
 
   .navbar,
