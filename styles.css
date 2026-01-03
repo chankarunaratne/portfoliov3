@@ -1224,6 +1224,11 @@ body {
   border-radius: 12px;
 }
 
+img.card-logo {
+  object-fit: cover;
+  background-color: transparent;
+}
+
 .card-link {
   display: flex;
   flex-direction: column;
