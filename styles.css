@@ -1320,6 +1320,8 @@ img.card-logo {
   width: 100%;
   max-width: 720px;
   margin-top: 8px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .product-card {
@@ -1893,6 +1895,7 @@ img.card-logo {
 
   .products-cards-container {
     width: 100vw;
+    max-width: none;
     margin-left: calc(50% - 50vw);
     padding: 0 5%;
     box-sizing: border-box;
