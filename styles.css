@@ -1306,19 +1306,135 @@ img.card-logo {
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-  color: #666d80;
+  color: #818898;
   text-align: center;
   margin: 0;
   width: 450px;
   max-width: 100%;
 }
 
-.my-products-title-main {
+.products-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 720px;
+  margin-top: 8px;
+}
+
+.product-card {
+  background-color: #f6f8fa;
+  border: 1px solid #eceff3;
+  border-radius: 14px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.product-card-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.product-logo-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.product-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.product-name {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #36394a;
+  margin: 0;
+}
+
+.product-description {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #666d80;
+  margin: 0;
+}
+
+.product-button-secondary {
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(193, 199, 208, 0.02) 100%
+    ),
+    linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%);
+  border: 1px solid rgba(18, 55, 105, 0.08);
+  border-radius: 60px;
+  padding: 6px 8px;
+  box-shadow: 0px 1px 2px 0px rgba(164, 172, 185, 0.24),
+    0px 0px 0px 1px rgba(18, 55, 105, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+.product-button-secondary:hover {
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(193, 199, 208, 0.04) 100%
+    ),
+    linear-gradient(90deg, rgb(248, 249, 250) 0%, rgb(248, 249, 250) 100%);
+}
+
+.product-button-secondary:active {
+  transform: translateY(0.5px);
+}
+
+.product-button-text {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
   color: #36394a;
 }
 
-.my-products-title-secondary {
-  color: #818898;
+.product-button-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: block;
 }
 
 /* Writing Section */
@@ -1773,6 +1889,50 @@ img.card-logo {
     width: 100% !important;
     padding: 0 16px;
     box-sizing: border-box;
+  }
+
+  .products-cards-container {
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  .product-card {
+    padding: 8px;
+  }
+
+  .product-card-content {
+    gap: 12px;
+  }
+
+  .product-logo-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .product-details {
+    gap: 4px;
+  }
+
+  .product-name,
+  .product-description {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .product-button-secondary {
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .product-button-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .product-button-icon {
+    width: 20px;
+    height: 20px;
   }
 
   .writing-section {
