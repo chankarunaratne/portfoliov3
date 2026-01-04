@@ -1439,6 +1439,25 @@ img.card-logo {
   display: block;
 }
 
+.product-button-disabled {
+  background-color: #eceff3;
+  border: none;
+  border-radius: 60px;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: not-allowed;
+  flex-shrink: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+.product-button-disabled .product-button-text {
+  color: #a4acb9;
+}
+
 /* Writing Section */
 .writing-section {
   margin: 0 auto 48px;
