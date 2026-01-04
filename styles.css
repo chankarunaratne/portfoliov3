@@ -1892,8 +1892,9 @@ img.card-logo {
   }
 
   .products-cards-container {
-    width: 100%;
-    padding: 0 16px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 0 5%;
     box-sizing: border-box;
   }
 
