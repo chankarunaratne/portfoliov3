@@ -267,15 +267,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 250);
   });
 
-  // Showcase Modal Functionality
-  const showcaseModal = document.getElementById("showcase-modal");
-  const showcaseModalOverlay = document.querySelector(
-    ".showcase-modal-overlay"
+  // Case Study Modal Functionality
+  const caseStudyModal = document.getElementById("case-study-modal");
+  const caseStudyModalOverlay = document.querySelector(
+    ".case-study-modal-overlay"
   );
-  const showcaseModalClose = document.querySelector(".showcase-modal-close");
+  const caseStudyModalClose = document.querySelector(".case-study-modal-close");
 
-  // Showcase data for each card
-  const showcaseData = {
+  // Case study data for each card
+  const caseStudyData = {
     docswell: {
       logo: "", // Placeholder logo URL (empty for now, will show grey placeholder)
       company: "Docswell",
@@ -320,12 +320,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // Function to open showcase modal with specific content
-  function openShowcaseModal(showcaseType) {
-    const data = showcaseData[showcaseType] || showcaseData['docswell']; // Fallback to docswell if type not found
+  // Function to open case study modal with specific content
+  function openCaseStudyModal(caseStudyType) {
+    const data = caseStudyData[caseStudyType] || caseStudyData['docswell']; // Fallback to docswell if type not found
 
     // Update modal content
-    const logoElement = document.getElementById("showcase-logo");
+    const logoElement = document.getElementById("case-study-logo");
     if (data.logo) {
       // If logo URL provided, create img element
       logoElement.innerHTML = `<img src="${data.logo}" alt="${data.company} logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" />`;
@@ -334,34 +334,34 @@ document.addEventListener("DOMContentLoaded", function () {
       logoElement.innerHTML = "";
     }
     
-    document.getElementById("showcase-company-name").textContent = data.company;
-    document.getElementById("showcase-role").textContent = data.role;
-    document.getElementById("showcase-title").textContent = data.title;
+    document.getElementById("case-study-company-name").textContent = data.company;
+    document.getElementById("case-study-role").textContent = data.role;
+    document.getElementById("case-study-title").textContent = data.title;
     
-    const subheadingElement = document.getElementById("showcase-subheading");
+    const subheadingElement = document.getElementById("case-study-subheading");
     if (subheadingElement) {
       subheadingElement.textContent = data.subheading;
     }
     
     // Use innerHTML to support HTML content in description (paragraphs, etc.)
-    document.getElementById("showcase-description").innerHTML = data.description;
+    document.getElementById("case-study-description").innerHTML = data.description;
 
     // Show modal
-    showcaseModal.style.display = "flex";
+    caseStudyModal.style.display = "flex";
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
 
     // Get references to modal elements
-    const showcaseModalContainer = document.querySelector(".showcase-modal-container");
+    const caseStudyModalContainer = document.querySelector(".case-study-modal-container");
     
     // Function to check if event originated from scrollable container
     const isEventFromScrollableContainer = function(e) {
-      if (!showcaseModalContainer) return false;
+      if (!caseStudyModalContainer) return false;
       let target = e.target;
       
       // Walk up the DOM tree to check if we're inside the scrollable container
       while (target && target !== document.body) {
-        if (target === showcaseModalContainer || showcaseModalContainer.contains(target)) {
+        if (target === caseStudyModalContainer || caseStudyModalContainer.contains(target)) {
           return true;
         }
         target = target.parentElement;
@@ -377,14 +377,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       
       // Otherwise, prevent background scroll and forward to popup container
-      if (showcaseModalContainer) {
+      if (caseStudyModalContainer) {
         e.preventDefault();
         e.stopPropagation();
         
         // Check boundaries before applying scroll
         const scrollAmount = e.deltaY;
-        const currentScroll = showcaseModalContainer.scrollTop;
-        const maxScroll = showcaseModalContainer.scrollHeight - showcaseModalContainer.clientHeight;
+        const currentScroll = caseStudyModalContainer.scrollTop;
+        const maxScroll = caseStudyModalContainer.scrollHeight - caseStudyModalContainer.clientHeight;
         const isAtTop = currentScroll === 0;
         const isAtBottom = currentScroll >= maxScroll - 1;
         
@@ -395,7 +395,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Apply scroll to the container
         const newScroll = Math.max(0, Math.min(maxScroll, currentScroll + scrollAmount));
-        showcaseModalContainer.scrollTop = newScroll;
+        caseStudyModalContainer.scrollTop = newScroll;
       }
     };
 
@@ -403,9 +403,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let touchStartScroll = 0;
     
     const forwardScrollToPopupTouchStart = function(e) {
-      if (showcaseModalContainer && e.touches.length === 1) {
+      if (caseStudyModalContainer && e.touches.length === 1) {
         touchStartY = e.touches[0].clientY;
-        touchStartScroll = showcaseModalContainer.scrollTop;
+        touchStartScroll = caseStudyModalContainer.scrollTop;
       }
     };
 
@@ -416,19 +416,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       
       // Otherwise, prevent background scroll and forward to popup container
-      if (showcaseModalContainer && e.touches.length === 1) {
+      if (caseStudyModalContainer && e.touches.length === 1) {
         e.preventDefault();
         e.stopPropagation();
         
         const touchY = e.touches[0].clientY;
         const deltaY = touchStartY - touchY;
-        const currentScroll = showcaseModalContainer.scrollTop;
-        const maxScroll = showcaseModalContainer.scrollHeight - showcaseModalContainer.clientHeight;
+        const currentScroll = caseStudyModalContainer.scrollTop;
+        const maxScroll = caseStudyModalContainer.scrollHeight - caseStudyModalContainer.clientHeight;
         const newScroll = touchStartScroll + deltaY;
         
         // Clamp to boundaries
         const clampedScroll = Math.max(0, Math.min(maxScroll, newScroll));
-        showcaseModalContainer.scrollTop = clampedScroll;
+        caseStudyModalContainer.scrollTop = clampedScroll;
       }
     };
 
@@ -439,14 +439,14 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("touchmove", forwardScrollToPopupTouchMove, { passive: false });
     
     // Store document handlers for cleanup
-    document._showcaseScrollHandlers = {
+    document._caseStudyScrollHandlers = {
       wheel: forwardScrollToPopupWheel,
       touchstart: forwardScrollToPopupTouchStart,
       touchmove: forwardScrollToPopupTouchMove
     };
 
     // Prevent scroll propagation when container reaches limits
-    if (showcaseModalContainer) {
+    if (caseStudyModalContainer) {
       let touchStartY = 0;
       
       const handleWheel = function(e) {
@@ -480,12 +480,12 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       // Use wheel event for mouse wheel scrolling
-      showcaseModalContainer.addEventListener("wheel", handleWheel, { passive: false });
-      showcaseModalContainer.addEventListener("touchstart", handleTouchStart, { passive: true });
-      showcaseModalContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
+      caseStudyModalContainer.addEventListener("wheel", handleWheel, { passive: false });
+      caseStudyModalContainer.addEventListener("touchstart", handleTouchStart, { passive: true });
+      caseStudyModalContainer.addEventListener("touchmove", handleTouchMove, { passive: false });
       
       // Store the handlers so we can remove them later
-      showcaseModalContainer._scrollHandlers = {
+      caseStudyModalContainer._scrollHandlers = {
         wheel: handleWheel,
         touchstart: handleTouchStart,
         touchmove: handleTouchMove
@@ -493,27 +493,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Function to close showcase modal
-  function closeShowcaseModal() {
-    showcaseModal.style.display = "none";
+  // Function to close case study modal
+  function closeCaseStudyModal() {
+    caseStudyModal.style.display = "none";
     document.body.style.overflow = "auto";
     document.documentElement.style.overflow = "auto";
     
     // Remove scroll event listeners from container
-    const showcaseModalContainer = document.querySelector(".showcase-modal-container");
-    if (showcaseModalContainer && showcaseModalContainer._scrollHandlers) {
-      showcaseModalContainer.removeEventListener("wheel", showcaseModalContainer._scrollHandlers.wheel);
-      showcaseModalContainer.removeEventListener("touchstart", showcaseModalContainer._scrollHandlers.touchstart);
-      showcaseModalContainer.removeEventListener("touchmove", showcaseModalContainer._scrollHandlers.touchmove);
-      showcaseModalContainer._scrollHandlers = null;
+    const caseStudyModalContainer = document.querySelector(".case-study-modal-container");
+    if (caseStudyModalContainer && caseStudyModalContainer._scrollHandlers) {
+      caseStudyModalContainer.removeEventListener("wheel", caseStudyModalContainer._scrollHandlers.wheel);
+      caseStudyModalContainer.removeEventListener("touchstart", caseStudyModalContainer._scrollHandlers.touchstart);
+      caseStudyModalContainer.removeEventListener("touchmove", caseStudyModalContainer._scrollHandlers.touchmove);
+      caseStudyModalContainer._scrollHandlers = null;
     }
 
     // Remove document scroll handlers
-    if (document._showcaseScrollHandlers) {
-      document.removeEventListener("wheel", document._showcaseScrollHandlers.wheel);
-      document.removeEventListener("touchstart", document._showcaseScrollHandlers.touchstart);
-      document.removeEventListener("touchmove", document._showcaseScrollHandlers.touchmove);
-      document._showcaseScrollHandlers = null;
+    if (document._caseStudyScrollHandlers) {
+      document.removeEventListener("wheel", document._caseStudyScrollHandlers.wheel);
+      document.removeEventListener("touchstart", document._caseStudyScrollHandlers.touchstart);
+      document.removeEventListener("touchmove", document._caseStudyScrollHandlers.touchmove);
+      document._caseStudyScrollHandlers = null;
     }
   }
 
@@ -521,26 +521,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const caseCards = document.querySelectorAll(".case-card");
   caseCards.forEach((card) => {
     card.addEventListener("click", function () {
-      const showcaseType = card.getAttribute("data-showcase");
-      if (showcaseType) {
-        openShowcaseModal(showcaseType);
+      const caseStudyType = card.getAttribute("data-case-study");
+      if (caseStudyType) {
+        openCaseStudyModal(caseStudyType);
       }
     });
   });
 
-  // Close showcase modal event listeners
-  if (showcaseModalClose) {
-    showcaseModalClose.addEventListener("click", closeShowcaseModal);
+  // Close case study modal event listeners
+  if (caseStudyModalClose) {
+    caseStudyModalClose.addEventListener("click", closeCaseStudyModal);
   }
 
-  if (showcaseModalOverlay) {
-    showcaseModalOverlay.addEventListener("click", closeShowcaseModal);
+  if (caseStudyModalOverlay) {
+    caseStudyModalOverlay.addEventListener("click", closeCaseStudyModal);
   }
 
-  // Close showcase modal with Escape key
+  // Close case study modal with Escape key
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && showcaseModal.style.display === "flex") {
-      closeShowcaseModal();
+    if (e.key === "Escape" && caseStudyModal.style.display === "flex") {
+      closeCaseStudyModal();
     }
   });
 
