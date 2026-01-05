@@ -308,26 +308,27 @@ document.addEventListener('DOMContentLoaded', function () {
       company: 'Docswell',
       role: 'Product Designer',
       title:
-        'Taking Docswell’s MVP to production as the sole designer of the team',
+        'Leading design at Docswell to help them go from MVP to public launch',
       subheading:
-        'Overhauled both patient and practitioner portals from the ground up and prepared them for production launch.',
+        'Worked on both patient and practitioner portals and prepared them for public release.',
       description: `
-        <p style="margin-bottom: 20px;">The original appointment booking flow for Docswell, a UK-based medtech startup, was unintuitive and time-consuming. Users — both patients and medical staff — struggled with unclear navigation, redundant form fields, and lack of real-time availability. Feedback from clinics highlighted frequent booking errors and increased support requests.</p>
+        <p style="margin-bottom: 20px;">(AI-generated placeholder) The startup set out to digitise a fragmented patient management process that was largely dependent on manual workflows, legacy software, and inconsistent data entry across clinics. Through early stakeholder interviews with clinicians, administrative staff, and operations managers, it became clear that existing systems created friction at every stage — from patient onboarding and record updates to appointment coordination and follow-ups. These inefficiencies led to duplicated work, increased risk of errors, and limited visibility across teams.</p>
         
-        <p style="margin-bottom: 20px;">I was the sole product designer on the project, working closely with the founder and the dev team. I led the UX research, wireframing, high-fidelity prototyping, and supported hand-off to developers. We followed a lean, iterative approach with weekly user testing cycles.</p>
+        <p style="margin-bottom: 20px;">My role focused on translating these operational pain points into a clear, scalable product experience. I collaborated closely with clinical staff to map end-to-end patient journeys and identify moments where digital intervention could reduce cognitive load and administrative overhead. Based on these insights, I designed a unified patient management interface that prioritised clarity, role-based access, and fast data retrieval. Low-fidelity wireframes were tested early to validate structure and terminology before moving into high-fidelity designs aligned with NHS-adjacent accessibility and compliance considerations.</p>
         
-        <p>We started by mapping out the existing booking journey and conducting quick interviews with 6 clinic staff and 4 patients. The biggest pain points? Too many steps, no calendar visibility, and lack of mobile optimisation.</p>
+        <p>The final solution introduced a streamlined dashboard that centralised patient records, appointment history, and task management in one place. By simplifying navigation and reducing unnecessary steps, the platform aimed to support faster decision-making and more consistent workflows across clinics. While the product continues to evolve, initial feedback from internal users highlighted improved efficiency, reduced training time for new staff, and greater confidence in managing patient information digitally.</p>
       `,
     },
     rememberly: {
       logo: '',
       company: 'Rememberly',
       role: 'Founder + Maker',
-      title: 'Never forget a moment',
+      title:
+        'Designing and developing a mobile app that saves highlights from physical books',
       subheading:
-        "A personal memory keeper that helps you cherish life's highlights",
+        'Worked on the full cycle from concept to development as Im working on launching my first iPhone app',
       description: `
-        <p style="margin-bottom: 20px;">The original experience for Rememberly, a mobile app designed to save highlights from physical books using a phone camera, was fragmented and unreliable. Early users struggled with inconsistent scan quality, unclear feedback during capture, and a confusing transition between scanning, editing, and saving highlights. Many felt the process interrupted their reading flow, making the app feel heavier than simply jotting notes. Feedback consistently pointed to friction at the exact moment users wanted speed and focus.</p>
+        <p style="margin-bottom: 20px;">(AI-generated placeholder) The original experience for Rememberly, a mobile app designed to save highlights from physical books using a phone camera, was fragmented and unreliable. Early users struggled with inconsistent scan quality, unclear feedback during capture, and a confusing transition between scanning, editing, and saving highlights. Many felt the process interrupted their reading flow, making the app feel heavier than simply jotting notes. Feedback consistently pointed to friction at the exact moment users wanted speed and focus.</p>
         
         <p style="margin-bottom: 20px;">I worked as the sole product designer, collaborating closely with a solo iOS developer and an OCR-focused engineer. I led the end-to-end design process, including problem definition, user interviews, journey mapping, wireframing, and high-fidelity prototyping, while supporting developer handoff. Given tight timelines and limited resources, we followed a lean, iterative approach with short design sprints and frequent validation using real books in real-world reading conditions.</p>
         
@@ -338,11 +339,10 @@ document.addEventListener('DOMContentLoaded', function () {
       logo: '',
       company: 'Jiffyhive',
       role: 'Founding Designer',
-      title: 'Streamlining freelance workflows',
-      subheading:
-        'All-in-one platform for freelancers to manage projects and payments',
+      title: 'Jiffyhive: AI-powered employee hiring platform',
+      subheading: 'Led design while working closely with the co-founders',
       description: `
-        <p style="margin-bottom: 20px;">The original hiring flow for Jiffyhive, an AI-powered employee hiring platform, was overwhelming for both employers and candidates. Recruiters struggled with long setup times, noisy candidate lists, and little clarity on why certain matches were recommended. Candidates, on the other hand, found the application process repetitive and impersonal, with unclear expectations around role fit and response timelines. As a result, drop-off rates were high and hiring teams relied heavily on manual screening despite the presence of AI.</p>
+        <p style="margin-bottom: 20px;">(AI-generated placeholder) The original hiring flow for Jiffyhive, an AI-powered employee hiring platform, was overwhelming for both employers and candidates. Recruiters struggled with long setup times, noisy candidate lists, and little clarity on why certain matches were recommended. Candidates, on the other hand, found the application process repetitive and impersonal, with unclear expectations around role fit and response timelines. As a result, drop-off rates were high and hiring teams relied heavily on manual screening despite the presence of AI.</p>
         
         <p style="margin-bottom: 20px;">I worked as the sole product designer, partnering closely with the founder and a small engineering team. I led discovery, UX research, flow redesign, wireframing, and high-fidelity prototyping, and supported implementation through ongoing design reviews. We followed a lean, outcome-driven process, shipping in small increments and validating assumptions through weekly usability tests with recruiters and job seekers across different company sizes.</p>
         
