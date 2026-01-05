@@ -314,9 +314,15 @@ document.addEventListener('DOMContentLoaded', function () {
       description: `
         <p style="margin-bottom: 20px;">(AI-generated placeholder) The startup set out to digitise a fragmented patient management process that was largely dependent on manual workflows, legacy software, and inconsistent data entry across clinics. Through early stakeholder interviews with clinicians, administrative staff, and operations managers, it became clear that existing systems created friction at every stage — from patient onboarding and record updates to appointment coordination and follow-ups. These inefficiencies led to duplicated work, increased risk of errors, and limited visibility across teams.</p>
         
-        <p style="margin-bottom: 20px;">My role focused on translating these operational pain points into a clear, scalable product experience. I collaborated closely with clinical staff to map end-to-end patient journeys and identify moments where digital intervention could reduce cognitive load and administrative overhead. Based on these insights, I designed a unified patient management interface that prioritised clarity, role-based access, and fast data retrieval. Low-fidelity wireframes were tested early to validate structure and terminology before moving into high-fidelity designs aligned with NHS-adjacent accessibility and compliance considerations.</p>
-        
-        <p>The final solution introduced a streamlined dashboard that centralised patient records, appointment history, and task management in one place. By simplifying navigation and reducing unnecessary steps, the platform aimed to support faster decision-making and more consistent workflows across clinics. While the product continues to evolve, initial feedback from internal users highlighted improved efficiency, reduced training time for new staff, and greater confidence in managing patient information digitally.</p>
+        <div class="case-study-images">
+          <img src="assets/docswell-exports/docswell-export-dashboard.png" alt="Docswell dashboard" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-dashboard.png" />
+          <img src="assets/docswell-exports/docswell-export-inbox.png" alt="Docswell inbox" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-inbox.png" />
+          <img src="assets/docswell-exports/docswell-export-inbox-general.png" alt="Docswell inbox general" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-inbox-general.png" />
+          <img src="assets/docswell-exports/docswell-export-calendar-event.png" alt="Docswell calendar event" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-calendar-event.png" />
+          <img src="assets/docswell-exports/docswell-export-calendar-modal.png" alt="Docswell calendar modal" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-calendar-modal.png" />
+          <img src="assets/docswell-exports/docswell-export-profile-activity.png" alt="Docswell profile activity" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-profile-activity.png" />
+          <img src="assets/docswell-exports/docswell-export-profile-note.png" alt="Docswell profile note" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-profile-note.png" />
+        </div>
       `,
     },
     rememberly: {
@@ -378,6 +384,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Use innerHTML to support HTML content in description (paragraphs, etc.)
     document.getElementById('case-study-description').innerHTML =
       data.description;
+
+    // Re-attach image popup handlers for dynamically added images
+    const caseStudyImages = document.querySelectorAll(
+      '#case-study-description [data-image-popup]'
+    );
+    caseStudyImages.forEach((img) => {
+      img.addEventListener('click', function () {
+        const imageSrc = this.getAttribute('data-image-popup');
+        const imageAlt = this.getAttribute('alt') || '';
+        openImagePopup(imageSrc, imageAlt);
+      });
+    });
 
     // Show modal
     caseStudyModal.style.display = 'flex';
