@@ -1039,7 +1039,7 @@ body {
   font-size: 14px;
   font-weight: 400;
   line-height: 26px;
-  color: #666d80;
+  color: var(--text-muted);
   margin: 0;
 }
 
@@ -2222,6 +2222,18 @@ img.card-logo {
     font-size: 24px !important;
     line-height: 32px !important;
     letter-spacing: -0.24px !important;
+  }
+
+  .case-study-section-heading {
+    font-size: 16px !important;
+    line-height: 28px !important;
+    color: var(--text-muted) !important;
+  }
+
+  .case-study-section-text {
+    font-size: 16px !important;
+    line-height: 28px !important;
+    color: var(--text-muted) !important;
   }
 
   .case-study-description {
