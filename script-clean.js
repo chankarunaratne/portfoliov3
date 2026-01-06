@@ -373,6 +373,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('case-study-company-name').textContent =
       data.company;
+    document.getElementById('case-study-role').textContent = data.role;
     document.getElementById('case-study-title').textContent = data.title;
 
     // Extract paragraphs for Background and Role sections
