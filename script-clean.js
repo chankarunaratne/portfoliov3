@@ -380,6 +380,25 @@ document.addEventListener('DOMContentLoaded', function () {
     tempDiv.innerHTML = data.description;
     const paragraphs = tempDiv.querySelectorAll('p');
     
+    // Extract dashboard image for docswell (first image in the images container)
+    const featuredImageContainer = document.getElementById('case-study-featured-image');
+    if (caseStudyType === 'docswell') {
+      const imagesContainer = tempDiv.querySelector('.case-study-images');
+      if (imagesContainer) {
+        const firstImage = imagesContainer.querySelector('img[src*="dashboard"]');
+        if (firstImage) {
+          // Clone and add the dashboard image to featured image container
+          const clonedImage = firstImage.cloneNode(true);
+          featuredImageContainer.innerHTML = '';
+          featuredImageContainer.appendChild(clonedImage);
+          // Remove the dashboard image from the original container
+          firstImage.remove();
+        }
+      }
+    } else {
+      featuredImageContainer.innerHTML = '';
+    }
+    
     if (paragraphs.length > 0) {
       // Set background text to first paragraph's text content
       document.getElementById('case-study-background-text').textContent =
@@ -404,7 +423,16 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('case-study-description').innerHTML =
       tempDiv.innerHTML;
 
-    // Re-attach image popup handlers for dynamically added images
+    // Re-attach image popup handlers for dynamically added images (featured image and description images)
+    const featuredImage = featuredImageContainer.querySelector('[data-image-popup]');
+    if (featuredImage) {
+      featuredImage.addEventListener('click', function () {
+        const imageSrc = this.getAttribute('data-image-popup');
+        const imageAlt = this.getAttribute('alt') || '';
+        openImagePopup(imageSrc, imageAlt);
+      });
+    }
+    
     const caseStudyImages = document.querySelectorAll(
       '#case-study-description [data-image-popup]'
     );

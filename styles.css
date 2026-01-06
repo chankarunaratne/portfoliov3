@@ -967,7 +967,6 @@ body {
 .case-study-logo {
   width: 48px;
   height: 48px;
-  background-color: #d9d9d9;
   flex-shrink: 0;
   object-fit: cover;
 }
@@ -1019,6 +1018,23 @@ body {
   letter-spacing: -0.32px;
   color: var(--text-muted);
   margin: 0;
+}
+
+.case-study-featured-image {
+  width: 100%;
+  margin: 0;
+}
+
+.case-study-featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+}
+
+.case-study-featured-image img:hover {
+  opacity: 0.9;
 }
 
 .case-study-sections {
