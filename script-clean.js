@@ -375,9 +375,26 @@ document.addEventListener('DOMContentLoaded', function () {
       data.company;
     document.getElementById('case-study-title').textContent = data.title;
 
-    // Use innerHTML to support HTML content in description (paragraphs, etc.)
-    document.getElementById('case-study-description').innerHTML =
-      data.description;
+    // Extract first paragraph for Background section
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = data.description;
+    const firstParagraph = tempDiv.querySelector('p');
+    
+    if (firstParagraph) {
+      // Set background text to first paragraph's text content
+      document.getElementById('case-study-background-text').textContent =
+        firstParagraph.textContent;
+      
+      // Remove first paragraph from description and set the rest
+      firstParagraph.remove();
+      document.getElementById('case-study-description').innerHTML =
+        tempDiv.innerHTML;
+    } else {
+      // Fallback if no paragraph found
+      document.getElementById('case-study-background-text').textContent = '';
+      document.getElementById('case-study-description').innerHTML =
+        data.description;
+    }
 
     // Re-attach image popup handlers for dynamically added images
     const caseStudyImages = document.querySelectorAll(
