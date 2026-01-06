@@ -373,13 +373,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('case-study-company-name').textContent =
       data.company;
-    document.getElementById('case-study-role').textContent = data.role;
     document.getElementById('case-study-title').textContent = data.title;
-
-    const subheadingElement = document.getElementById('case-study-subheading');
-    if (subheadingElement) {
-      subheadingElement.textContent = data.subheading;
-    }
 
     // Use innerHTML to support HTML content in description (paragraphs, etc.)
     document.getElementById('case-study-description').innerHTML =

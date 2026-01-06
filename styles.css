@@ -950,7 +950,7 @@ body {
   padding: 40px 32px 32px 32px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   overflow-y: auto;
   overscroll-behavior: contain;
   flex: 1;
