@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Case study data for each card
   const caseStudyData = {
     docswell: {
-      logo: '', // Placeholder logo URL (empty for now, will show grey placeholder)
+      logo: 'assets/docswell-exports/product-logo.png',
       company: 'Docswell',
       role: 'Product Designer',
       title:
@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoElement = document.getElementById('case-study-logo');
     if (data.logo) {
       // If logo URL provided, create img element
-      logoElement.innerHTML = `<img src="${data.logo}" alt="${data.company} logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;" />`;
+      logoElement.innerHTML = `<img src="${data.logo}" alt="${data.company} logo" style="width: 100%; height: 100%; object-fit: cover;" />`;
     } else {
       // Show placeholder background (already styled in CSS)
       logoElement.innerHTML = '';
@@ -375,26 +375,34 @@ document.addEventListener('DOMContentLoaded', function () {
       data.company;
     document.getElementById('case-study-title').textContent = data.title;
 
-    // Extract first paragraph for Background section
+    // Extract paragraphs for Background and Role sections
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = data.description;
-    const firstParagraph = tempDiv.querySelector('p');
+    const paragraphs = tempDiv.querySelectorAll('p');
     
-    if (firstParagraph) {
+    if (paragraphs.length > 0) {
       // Set background text to first paragraph's text content
       document.getElementById('case-study-background-text').textContent =
-        firstParagraph.textContent;
-      
-      // Remove first paragraph from description and set the rest
-      firstParagraph.remove();
-      document.getElementById('case-study-description').innerHTML =
-        tempDiv.innerHTML;
+        paragraphs[0].textContent;
+      paragraphs[0].remove();
     } else {
-      // Fallback if no paragraph found
       document.getElementById('case-study-background-text').textContent = '';
-      document.getElementById('case-study-description').innerHTML =
-        data.description;
     }
+    
+    if (paragraphs.length > 1) {
+      // Set role text to second paragraph's text content
+      document.getElementById('case-study-role-text').textContent =
+        paragraphs[1].textContent;
+      paragraphs[1].remove();
+    } else {
+      // Use placeholder if no second paragraph
+      document.getElementById('case-study-role-text').textContent =
+        'Placeholder text for the Role section.';
+    }
+    
+    // Set the remaining content (other paragraphs and images) in description
+    document.getElementById('case-study-description').innerHTML =
+      tempDiv.innerHTML;
 
     // Re-attach image popup handlers for dynamically added images
     const caseStudyImages = document.querySelectorAll(
