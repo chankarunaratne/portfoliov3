@@ -1443,6 +1443,8 @@ img.card-logo {
   transition: all 0.2s ease;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
+  text-decoration: none;
+  color: inherit;
 }
 
 .product-button-secondary:hover {
