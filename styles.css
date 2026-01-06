@@ -2258,6 +2258,15 @@ img.card-logo {
     color: var(--text-muted) !important;
   }
 
+  .case-study-featured-image {
+    margin: 0 0 20px 0 !important;
+  }
+
+  .case-study-featured-image img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
   .case-study-images {
     margin: 24px 0 0 0 !important;
     gap: 24px !important;
