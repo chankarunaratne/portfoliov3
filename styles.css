@@ -1037,7 +1037,7 @@ body {
     'Helvetica Neue', Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 28px;
   color: #36394A;
   margin: 0;
 }
@@ -2195,7 +2195,7 @@ img.card-logo {
 
   .case-study-description {
     font-size: 16px !important;
-    line-height: 24px !important;
+    line-height: 28px !important;
     color: #36394A !important;
   }
 
