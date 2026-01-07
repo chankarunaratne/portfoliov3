@@ -309,6 +309,7 @@ document.addEventListener('DOMContentLoaded', function () {
       role: 'Product Designer',
       title:
         'Leading design at Docswell to help them go from MVP to public launch',
+      introParagraph: 'Docswell is UK-based startup that helps medical practices completely digitise their workflow.',
       subheading:
         'Worked on both patient and practitioner portals and prepared them for public release.',
       description: `
@@ -331,6 +332,7 @@ document.addEventListener('DOMContentLoaded', function () {
       role: 'Founder + Maker',
       title:
         'Designing and developing a mobile app that saves highlights from physical books',
+      introParagraph: 'This is a placeholder sentence for the Rememberly case study.',
       subheading:
         'Worked on the full cycle from concept to development as Im working on launching my first iPhone app',
       description: `
@@ -346,6 +348,7 @@ document.addEventListener('DOMContentLoaded', function () {
       company: 'Jiffyhive',
       role: 'Founding Designer',
       title: 'Jiffyhive: AI-powered employee hiring platform',
+      introParagraph: 'This is a placeholder sentence for the Jiffyhive case study.',
       subheading: 'Led design while working closely with the co-founders',
       description: `
         <p style="margin-bottom: 20px;">(AI-generated placeholder) The original hiring flow for Jiffyhive, an AI-powered employee hiring platform, was overwhelming for both employers and candidates. Recruiters struggled with long setup times, noisy candidate lists, and little clarity on why certain matches were recommended. Candidates, on the other hand, found the application process repetitive and impersonal, with unclear expectations around role fit and response timelines. As a result, drop-off rates were high and hiring teams relied heavily on manual screening despite the presence of AI.</p>
@@ -375,6 +378,8 @@ document.addEventListener('DOMContentLoaded', function () {
       data.company;
     document.getElementById('case-study-role').textContent = data.role;
     document.getElementById('case-study-title').textContent = data.title;
+    document.getElementById('case-study-intro-paragraph').textContent =
+      data.introParagraph || '';
 
     // Extract paragraphs for Background and Role sections
     const tempDiv = document.createElement('div');
