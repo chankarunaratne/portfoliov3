@@ -309,7 +309,8 @@ document.addEventListener('DOMContentLoaded', function () {
       role: 'Product Designer',
       title:
         'Leading design at Docswell to help them go from MVP to public launch',
-      introParagraph: 'Docswell is UK-based startup that helps medical practices completely digitise their workflow.',
+      introParagraph:
+        'Docswell is a UK-based medtech company that helps medical practices completely digitise their workflow.',
       subheading:
         'Worked on both patient and practitioner portals and prepared them for public release.',
       description: `
@@ -332,7 +333,8 @@ document.addEventListener('DOMContentLoaded', function () {
       role: 'Founder + Maker',
       title:
         'Designing and developing a mobile app that saves highlights from physical books',
-      introParagraph: 'This is a placeholder sentence for the Rememberly case study.',
+      introParagraph:
+        'This is a placeholder sentence for the Rememberly case study.',
       subheading:
         'Worked on the full cycle from concept to development as Im working on launching my first iPhone app',
       description: `
@@ -348,7 +350,8 @@ document.addEventListener('DOMContentLoaded', function () {
       company: 'Jiffyhive',
       role: 'Founding Designer',
       title: 'Jiffyhive: AI-powered employee hiring platform',
-      introParagraph: 'This is a placeholder sentence for the Jiffyhive case study.',
+      introParagraph:
+        'This is a placeholder sentence for the Jiffyhive case study.',
       subheading: 'Led design while working closely with the co-founders',
       description: `
         <p style="margin-bottom: 20px;">(AI-generated placeholder) The original hiring flow for Jiffyhive, an AI-powered employee hiring platform, was overwhelming for both employers and candidates. Recruiters struggled with long setup times, noisy candidate lists, and little clarity on why certain matches were recommended. Candidates, on the other hand, found the application process repetitive and impersonal, with unclear expectations around role fit and response timelines. As a result, drop-off rates were high and hiring teams relied heavily on manual screening despite the presence of AI.</p>
@@ -385,13 +388,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = data.description;
     const paragraphs = tempDiv.querySelectorAll('p');
-    
+
     // Extract dashboard image for docswell (first image in the images container)
-    const featuredImageContainer = document.getElementById('case-study-featured-image');
+    const featuredImageContainer = document.getElementById(
+      'case-study-featured-image'
+    );
     if (caseStudyType === 'docswell') {
       const imagesContainer = tempDiv.querySelector('.case-study-images');
       if (imagesContainer) {
-        const firstImage = imagesContainer.querySelector('img[src*="dashboard"]');
+        const firstImage = imagesContainer.querySelector(
+          'img[src*="dashboard"]'
+        );
         if (firstImage) {
           // Clone and add the dashboard image to featured image container
           const clonedImage = firstImage.cloneNode(true);
@@ -404,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       featuredImageContainer.innerHTML = '';
     }
-    
+
     if (paragraphs.length > 0) {
       // Set background text to first paragraph's text content
       document.getElementById('case-study-background-text').textContent =
@@ -413,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       document.getElementById('case-study-background-text').textContent = '';
     }
-    
+
     if (paragraphs.length > 1) {
       // Set role text to second paragraph's text content
       document.getElementById('case-study-role-text').textContent =
@@ -424,13 +431,14 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('case-study-role-text').textContent =
         'Placeholder text for the Role section.';
     }
-    
+
     // Set the remaining content (other paragraphs and images) in description
     document.getElementById('case-study-description').innerHTML =
       tempDiv.innerHTML;
 
     // Re-attach image popup handlers for dynamically added images (featured image and description images)
-    const featuredImage = featuredImageContainer.querySelector('[data-image-popup]');
+    const featuredImage =
+      featuredImageContainer.querySelector('[data-image-popup]');
     if (featuredImage) {
       featuredImage.addEventListener('click', function () {
         const imageSrc = this.getAttribute('data-image-popup');
@@ -438,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function () {
         openImagePopup(imageSrc, imageAlt);
       });
     }
-    
+
     const caseStudyImages = document.querySelectorAll(
       '#case-study-description [data-image-popup]'
     );
