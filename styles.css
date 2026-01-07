@@ -243,6 +243,10 @@ body {
   --testimonial-border: #eceff3;
 }
 
+.text-muted {
+  color: var(--text-muted);
+}
+
 /* Layout */
 .home {
   position: relative;
@@ -363,7 +367,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
-  color: var(--text-subdued);
+  color: var(--text-muted);
   margin: 0;
 }
 
@@ -584,6 +588,7 @@ body {
   overflow: hidden; /* keep flare neatly inside rounded corners */
   /* Force Safari to respect border-radius clipping for animated children */
   -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
   isolation: isolate;
 }
 
