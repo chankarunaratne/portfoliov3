@@ -432,6 +432,18 @@ document.addEventListener('DOMContentLoaded', function () {
         'Placeholder text for the Role section.';
     }
 
+    // Show and populate Solution section for docswell case study
+    const solutionSection = document.getElementById(
+      'case-study-solution-section'
+    );
+    if (caseStudyType === 'docswell') {
+      solutionSection.style.display = 'flex';
+      document.getElementById('case-study-solution-text').textContent =
+        'This is a placeholder sentence for the Solution section in the Docswell case study.';
+    } else {
+      solutionSection.style.display = 'none';
+    }
+
     // Set the remaining content (other paragraphs and images) in description
     document.getElementById('case-study-description').innerHTML =
       tempDiv.innerHTML;
