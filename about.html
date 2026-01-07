@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="about-html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#6EB5E5" />
+    <title>(dev) Chan - About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  </head>
+  <body class="about-page">
+    <canvas id="skyCanvas"></canvas>
+
+    <div class="about page-root">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="navbar-background"></div>
+        <div class="navbar-content">
+          <div class="logo-section">
+            <a href="index.html" class="logo-link">
+              <img src="assets/logo.png" alt="Chan" class="logo-image" />
+            </a>
+          </div>
+          <div class="nav-links">
+            <a href="about.html" class="nav-link">About</a>
+            <a href="index.html#my-products" class="nav-link">My Products</a>
+          </div>
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <img src="assets/menu.svg" alt="Menu" width="24" height="24" />
+          </button>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay">
+          <div class="mobile-nav-links">
+            <a href="about.html" class="mobile-nav-link">About</a>
+            <a href="index.html#my-products" class="mobile-nav-link">My Products</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="intro-stack about-stack">
+        <section class="about-panel" aria-label="About content">
+          <div class="about-panel-scroll">
+            <div class="about-panel-inner">
+              <h1 class="about-title">About</h1>
+              <p class="about-placeholder">
+                Placeholder for now — coming soon.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="sky.js" defer></script>
+    <script src="page-transition.js" defer></script>
+    <script src="script-clean.js"></script>
+  </body>
+</html>
+

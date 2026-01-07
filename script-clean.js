@@ -1,6 +1,17 @@
 // Portfolio website animations and interactions
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Share navbar height for layout calculations (e.g., about page fixed panel height)
+  function updateNavbarHeightVar() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    const height = navbar.offsetHeight || 0;
+    document.documentElement.style.setProperty('--navbar-height', `${height}px`);
+  }
+
+  updateNavbarHeightVar();
+  window.addEventListener('resize', updateNavbarHeightVar);
+
   // Sequential spring blur animation system
   const elementsToAnimate = [
     { selector: '.navbar', delay: 300 },
@@ -29,9 +40,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const logoLink = document.querySelector('.logo-link');
   if (logoLink) {
     logoLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      // Scroll to top of page for home navigation
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const href = this.getAttribute('href') || '';
+      const isHome =
+        window.location.pathname.endsWith('/') ||
+        window.location.pathname.endsWith('/index.html') ||
+        window.location.pathname.endsWith('index.html');
+
+      // If we're already on home, keep the existing smooth scroll-to-top behavior.
+      if (isHome && (href === 'index.html' || href === './index.html' || href === '/')) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
   }
 
@@ -39,7 +58,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach((link) => {
     link.addEventListener('click', function (e) {
-      e.preventDefault();
+      const href = this.getAttribute('href') || '';
+
+      // Smooth-scroll for in-page anchor navigation (e.g., #my-products on homepage)
+      if (href.startsWith('#') && href.length > 1) {
+        const targetId = href.slice(1);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else if (href === '#' || href === '') {
+        // Keep previous behavior for placeholder links
+        e.preventDefault();
+      }
 
       // Remove active class from all links
       navLinks.forEach((l) => l.classList.remove('active'));
@@ -81,7 +113,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Handle mobile nav link clicks
     mobileNavLinks.forEach((link) => {
       link.addEventListener('click', function (e) {
-        e.preventDefault();
+        const href = this.getAttribute('href') || '';
+
+        if (href.startsWith('#') && href.length > 1) {
+          const targetId = href.slice(1);
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } else if (href === '#' || href === '') {
+          e.preventDefault();
+        }
 
         // Remove active class from all mobile links
         mobileNavLinks.forEach((l) => l.classList.remove('active'));
@@ -890,4 +933,39 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
+
+  // Set nav active state based on current page + hash
+  function setActiveNav() {
+    const path = window.location.pathname.toLowerCase();
+    const isAbout = path.endsWith('/about.html') || path.endsWith('about.html');
+
+    navLinks.forEach((l) => l.classList.remove('active'));
+    mobileNavLinks.forEach((l) => l.classList.remove('active'));
+
+    const allLinks = [
+      ...Array.from(navLinks),
+      ...Array.from(mobileNavLinks),
+    ];
+
+    if (isAbout) {
+      allLinks.forEach((l) => {
+        if ((l.getAttribute('href') || '').includes('about.html')) {
+          l.classList.add('active');
+        }
+      });
+      return;
+    }
+
+    // Homepage: highlight My Products when hash matches, otherwise none
+    if (window.location.hash === '#my-products') {
+      allLinks.forEach((l) => {
+        if ((l.getAttribute('href') || '') === '#my-products') {
+          l.classList.add('active');
+        }
+      });
+    }
+  }
+
+  setActiveNav();
+  window.addEventListener('hashchange', setActiveNav);
 });

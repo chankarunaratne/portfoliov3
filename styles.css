@@ -85,6 +85,20 @@ body {
   position: relative; /* allow #skyCanvas absolute positioning to scroll with page */
 }
 
+/* Cross-page fade (used for home <-> about navigation) */
+.page-root {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.page-root.page-ready {
+  opacity: 1;
+}
+
+.page-root.page-leave {
+  opacity: 0;
+}
+
 /* Global sky canvas behind all content */
 #skyCanvas {
   position: absolute;
@@ -236,6 +250,121 @@ body {
   width: 100%;
   overflow-x: hidden;
   padding-top: 0; /* navbar is not fixed */
+}
+
+/* About page layout */
+.about {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* only the inner panel scrolls */
+  min-height: 100vh;
+}
+
+.about-html,
+.about-page {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Keep the sky fixed on About since the body itself doesn't scroll */
+.about-page #skyCanvas {
+  position: fixed;
+  height: 100svh;
+}
+
+@supports (height: 100dvh) {
+  .about-page #skyCanvas {
+    height: 100dvh;
+  }
+}
+
+/* Match the homepage sky gradient layer */
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100svh;
+  pointer-events: none;
+  z-index: -3;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 80%,
+      rgba(255, 255, 255, 0.7) 90%,
+      #ffffff 100%
+    ),
+    radial-gradient(
+      313% 100% at 50% 0%,
+      rgb(58, 128, 196) 0%,
+      rgb(80, 150, 210) 60%,
+      rgb(120, 180, 225) 88%,
+      rgb(160, 200, 235) 98%,
+      rgb(255, 255, 255) 100%
+    );
+}
+
+@supports (height: 100dvh) {
+  .about::before {
+    height: 100dvh;
+  }
+}
+
+/* White content container that matches hero width + top radius and starts in same vertical spot */
+.about-panel {
+  margin: 0 auto;
+  width: 720px;
+  max-width: 90%;
+  background: #ffffff;
+  border-radius: 32px 32px 0 0; /* match hero top corners */
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Fill the rest of the viewport under the navbar */
+  height: calc(100vh - var(--navbar-height, 0px));
+}
+
+@supports (height: 100dvh) {
+  .about-panel {
+    height: calc(100dvh - var(--navbar-height, 0px));
+  }
+}
+
+.about-panel-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.about-panel-inner {
+  padding: 35px 32px 48px 32px; /* align with hero padding, plus a bit more bottom */
+}
+
+.about-title {
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  color: var(--text-muted);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.01em;
+}
+
+.about-placeholder {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  color: var(--text-subdued);
+  margin: 0;
 }
 
 /* Stack wrapper for hero + video intro + case studies */
