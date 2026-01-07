@@ -475,6 +475,23 @@ document.addEventListener('DOMContentLoaded', function () {
         'Placeholder text for the Role section.';
     }
 
+    // Show and populate Outcome section for all case studies
+    const outcomeSection = document.getElementById(
+      'case-study-outcome-section'
+    );
+    outcomeSection.style.display = 'flex';
+    
+    // Set placeholder text based on case study type
+    let outcomeText = 'This is a placeholder sentence for the Outcome section.';
+    if (caseStudyType === 'docswell') {
+      outcomeText = 'This is a placeholder sentence for the Outcome section in the Docswell case study.';
+    } else if (caseStudyType === 'rememberly') {
+      outcomeText = 'This is a placeholder sentence for the Outcome section in the Rememberly case study.';
+    } else if (caseStudyType === 'jiffyhive') {
+      outcomeText = 'This is a placeholder sentence for the Outcome section in the Jiffyhive case study.';
+    }
+    document.getElementById('case-study-outcome-text').textContent = outcomeText;
+
     // Show and populate Solution section for all case studies
     const solutionSection = document.getElementById(
       'case-study-solution-section'
