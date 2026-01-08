@@ -50,6 +50,7 @@ html {
   width: 100%;
   overflow-x: hidden;
   min-height: 100%;
+  scroll-behavior: smooth;
   /* Gradient background: Blue at top (overscroll), fading to pure white quickly */
   background: linear-gradient(180deg, #5ba3d9 0%, #6eb5e5 200px, #ffffff 500px);
 }
@@ -635,6 +636,8 @@ body {
 .highlight-text {
   color: #ffffff;
   font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Hero lens flare overlay - simulates sunlight hitting the frosted glass from top-right */

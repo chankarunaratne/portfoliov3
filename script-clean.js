@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Navigation links functionality
-  const navLinks = document.querySelectorAll('.nav-link');
-  navLinks.forEach((link) => {
+  const allScrollLinks = document.querySelectorAll('.nav-link, .highlight-text');
+  allScrollLinks.forEach((link) => {
     link.addEventListener('click', function (e) {
       const href = this.getAttribute('href') || '';
 
@@ -73,13 +73,17 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
       }
 
-      // Remove active class from all links
-      navLinks.forEach((l) => l.classList.remove('active'));
-
-      // Add active class to clicked link
-      this.classList.add('active');
+      // Handle active state only for navbar links
+      if (this.classList.contains('nav-link')) {
+        const desktopNavLinks = document.querySelectorAll('.nav-link');
+        desktopNavLinks.forEach((l) => l.classList.remove('active'));
+        this.classList.add('active');
+      }
     });
   });
+
+  // Re-define navLinks for mobile menu logic to maintain original behavior
+  const navLinks = document.querySelectorAll('.nav-link');
 
   // Mobile menu functionality
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
