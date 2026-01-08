@@ -361,7 +361,11 @@ document.addEventListener('DOMContentLoaded', function () {
       subheading:
         'Worked on both patient and practitioner portals and prepared them for public release.',
       description: `
-        <p style="margin-bottom: 20px;">(AI-generated placeholder) The startup set out to digitise a fragmented patient management process that was largely dependent on manual workflows, legacy software, and inconsistent data entry across clinics. Through early stakeholder interviews with clinicians, administrative staff, and operations managers, it became clear that existing systems created friction at every stage — from patient onboarding and record updates to appointment coordination and follow-ups. These inefficiencies led to duplicated work, increased risk of errors, and limited visibility across teams.</p>
+        <p style="margin-bottom: 16px;">At the time, medical practitioners in the UK relied on multiple disconnected tools to manage a patient’s end to end journey, for appointments, records, and communication. This setup made daily workflows tedious and time consuming, especially for smaller practices with limited administrative support. As a result, clinicians were spending unnecessary time switching between systems rather than focusing on patient care.</p>
+        
+        <p style="margin-bottom: 16px;">When I joined the company, an early MVP design was already in place, but the business was shifting its strategy to focus on therapist led medical practices. With new functional requirements and limitations in the current experience, the team decided to revamp both the practitioner and patient portals to prepare the platoform for the first public release.</p>
+
+        <p style="margin-bottom: 16px;">I worked as the sole product designer, partnering closely with the founders and engineering team to lead the end-to-end design process, from discovery and user research to high-fidelity prototyping and developer handoff.</p>
         
         <div class="case-study-images">
           <img src="assets/docswell-exports/docswell-export-dashboard.png" alt="Docswell dashboard" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-dashboard.png" />
@@ -385,9 +389,9 @@ document.addEventListener('DOMContentLoaded', function () {
       subheading:
         'Worked on the full cycle from concept to development as Im working on launching my first iPhone app',
       description: `
-        <p style="margin-bottom: 20px;">(AI-generated placeholder) The original experience for Rememberly, a mobile app designed to save highlights from physical books using a phone camera, was fragmented and unreliable. Early users struggled with inconsistent scan quality, unclear feedback during capture, and a confusing transition between scanning, editing, and saving highlights. Many felt the process interrupted their reading flow, making the app feel heavier than simply jotting notes. Feedback consistently pointed to friction at the exact moment users wanted speed and focus.</p>
+        <p style="margin-bottom: 16px;">(AI-generated placeholder) The original experience for Rememberly, a mobile app designed to save highlights from physical books using a phone camera, was fragmented and unreliable. Early users struggled with inconsistent scan quality, unclear feedback during capture, and a confusing transition between scanning, editing, and saving highlights. Many felt the process interrupted their reading flow, making the app feel heavier than simply jotting notes. Feedback consistently pointed to friction at the exact moment users wanted speed and focus.</p>
         
-        <p style="margin-bottom: 20px;">I worked as the sole product designer, collaborating closely with a solo iOS developer and an OCR-focused engineer. I led the end-to-end design process, including problem definition, user interviews, journey mapping, wireframing, and high-fidelity prototyping, while supporting developer handoff. Given tight timelines and limited resources, we followed a lean, iterative approach with short design sprints and frequent validation using real books in real-world reading conditions.</p>
+        <p style="margin-bottom: 16px;">I worked as the sole product designer, collaborating closely with a solo iOS developer and an OCR-focused engineer. I led the end-to-end design process, including problem definition, user interviews, journey mapping, wireframing, and high-fidelity prototyping, while supporting developer handoff. Given tight timelines and limited resources, we followed a lean, iterative approach with short design sprints and frequent validation using real books in real-world reading conditions.</p>
         
         <p>We started by observing how readers naturally highlight and revisit content in physical books, followed by interviews with 5 active readers and 3 students. The main pain points were clear: too much camera friction, low confidence in OCR accuracy, and excessive manual cleanup after scanning. These insights drove a redesigned capture flow that prioritised speed, clear visual feedback, and minimal correction — enabling users to scan, review, and save a highlight in seconds without breaking their reading momentum.</p>
       `,
@@ -401,9 +405,9 @@ document.addEventListener('DOMContentLoaded', function () {
         'This is a placeholder sentence for the Jiffyhive case study.',
       subheading: 'Led design while working closely with the co-founders',
       description: `
-        <p style="margin-bottom: 20px;">(AI-generated placeholder) The original hiring flow for Jiffyhive, an AI-powered employee hiring platform, was overwhelming for both employers and candidates. Recruiters struggled with long setup times, noisy candidate lists, and little clarity on why certain matches were recommended. Candidates, on the other hand, found the application process repetitive and impersonal, with unclear expectations around role fit and response timelines. As a result, drop-off rates were high and hiring teams relied heavily on manual screening despite the presence of AI.</p>
+        <p style="margin-bottom: 16px;">(AI-generated placeholder) The original hiring flow for Jiffyhive, an AI-powered employee hiring platform, was overwhelming for both employers and candidates. Recruiters struggled with long setup times, noisy candidate lists, and little clarity on why certain matches were recommended. Candidates, on the other hand, found the application process repetitive and impersonal, with unclear expectations around role fit and response timelines. As a result, drop-off rates were high and hiring teams relied heavily on manual screening despite the presence of AI.</p>
         
-        <p style="margin-bottom: 20px;">I worked as the sole product designer, partnering closely with the founder and a small engineering team. I led discovery, UX research, flow redesign, wireframing, and high-fidelity prototyping, and supported implementation through ongoing design reviews. We followed a lean, outcome-driven process, shipping in small increments and validating assumptions through weekly usability tests with recruiters and job seekers across different company sizes.</p>
+        <p style="margin-bottom: 16px;">I worked as the sole product designer, partnering closely with the founder and a small engineering team. I led discovery, UX research, flow redesign, wireframing, and high-fidelity prototyping, and supported implementation through ongoing design reviews. We followed a lean, outcome-driven process, shipping in small increments and validating assumptions through weekly usability tests with recruiters and job seekers across different company sizes.</p>
         
         <p>We began by mapping the end-to-end hiring journey and interviewing 6 hiring managers and 8 job seekers. The key pain points were clear: too many steps to post a role, low trust in AI recommendations, and poor feedback loops for candidates. These insights informed a redesigned experience that focused on fast role setup, transparent AI matching signals, and clear next-step communication — allowing employers to reach qualified candidates in minutes while giving applicants confidence that their profiles were being evaluated fairly and efficiently.</p>
       `,
@@ -460,23 +464,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (paragraphs.length > 0) {
-      // Set background text to first paragraph's text content
-      document.getElementById('case-study-background-text').textContent =
-        paragraphs[0].textContent;
-      paragraphs[0].remove();
+      if (caseStudyType === 'docswell') {
+        // Docswell uses first two paragraphs for Background
+        const backgroundParagraphs = Array.from(paragraphs).slice(0, 2);
+        document.getElementById('case-study-background-text').innerHTML =
+          backgroundParagraphs.map((p) => p.outerHTML).join('');
+        backgroundParagraphs.forEach((p) => p.remove());
+      } else {
+        // Others use first paragraph for Background
+        document.getElementById('case-study-background-text').innerHTML =
+          paragraphs[0].outerHTML;
+        paragraphs[0].remove();
+      }
     } else {
-      document.getElementById('case-study-background-text').textContent = '';
+      document.getElementById('case-study-background-text').innerHTML = '';
     }
 
-    if (paragraphs.length > 1) {
-      // Set role text to second paragraph's text content
-      document.getElementById('case-study-role-text').textContent =
-        paragraphs[1].textContent;
-      paragraphs[1].remove();
+    // Refresh paragraphs list after removals
+    const remainingParagraphs = tempDiv.querySelectorAll('p');
+
+    if (remainingParagraphs.length > 0) {
+      // Set role text to next paragraph's text content
+      document.getElementById('case-study-role-text').innerHTML =
+        remainingParagraphs[0].outerHTML;
+      remainingParagraphs[0].remove();
     } else {
-      // Use placeholder if no second paragraph
-      document.getElementById('case-study-role-text').textContent =
-        'Placeholder text for the Role section.';
+      // Use placeholder if no more paragraphs
+      document.getElementById('case-study-role-text').innerHTML =
+        '<p>Placeholder text for the Role section.</p>';
     }
 
     // Show and populate Outcome section for all case studies
