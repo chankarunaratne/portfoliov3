@@ -385,6 +385,9 @@ document.addEventListener('DOMContentLoaded', function () {
           <li>Built and maintained a new design system that cut significant design and UI dev hours</li>
         </ul>
       `,
+      solutionHeading: 'Inbox',
+      solutionText:
+        'The inbox was designed as a centralised communication hub for medical practices, allowing practitioners to manage all patient interactions in one place. From a single interface, administrators could assign patients to specific practitioners, handle direct messaging, and create or manage appointments, reducing the need to switch between multiple tools. This approach streamlined day to day workflows and helped practices respond to patients more efficiently.',
     },
     rememberly: {
       logo: '',
@@ -532,21 +535,27 @@ document.addEventListener('DOMContentLoaded', function () {
     );
     solutionSection.style.display = 'flex';
 
-    // Set placeholder text based on case study type
-    let solutionText =
-      'This is a placeholder sentence for the Solution section.';
-    if (caseStudyType === 'docswell') {
-      solutionText =
-        'This is a placeholder sentence for the Solution section in the Docswell case study.';
-    } else if (caseStudyType === 'rememberly') {
-      solutionText =
-        'This is a placeholder sentence for the Solution section in the Rememberly case study.';
-    } else if (caseStudyType === 'jiffyhive') {
-      solutionText =
-        'This is a placeholder sentence for the Solution section in the Jiffyhive case study.';
+    // Set heading and text based on case study data
+    document.getElementById('case-study-solution-heading').textContent =
+      data.solutionHeading || 'Solution';
+
+    if (data.solutionText) {
+      document.getElementById('case-study-solution-text').textContent =
+        data.solutionText;
+    } else {
+      // Fallback placeholders
+      let solutionText =
+        'This is a placeholder sentence for the Solution section.';
+      if (caseStudyType === 'rememberly') {
+        solutionText =
+          'This is a placeholder sentence for the Solution section in the Rememberly case study.';
+      } else if (caseStudyType === 'jiffyhive') {
+        solutionText =
+          'This is a placeholder sentence for the Solution section in the Jiffyhive case study.';
+      }
+      document.getElementById('case-study-solution-text').textContent =
+        solutionText;
     }
-    document.getElementById('case-study-solution-text').textContent =
-      solutionText;
 
     // Set the remaining content (other paragraphs and images) in description
     document.getElementById('case-study-description').innerHTML =
