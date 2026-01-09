@@ -377,6 +377,14 @@ document.addEventListener('DOMContentLoaded', function () {
           <img src="assets/docswell-exports/docswell-export-profile-note.png" alt="Docswell profile note" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-profile-note.png" />
         </div>
       `,
+      outcome: `
+        <ul>
+          <li>Led the design to launch the MVP in 4 months</li>
+          <li>Launched the product to multiple practices in the UK for initial testing. Eventual public launch.</li>
+          <li>Pilot estimations showed a reduced new-clinic setup from 25 minutes (manual forms) to 12 minutes. Saving admins around 2.5 hours/week.</li>
+          <li>Built and maintained a new design system that cut significant design and UI dev hours</li>
+        </ul>
+      `,
     },
     rememberly: {
       logo: '',
@@ -500,16 +508,23 @@ document.addEventListener('DOMContentLoaded', function () {
     );
     outcomeSection.style.display = 'flex';
     
-    // Set placeholder text based on case study type
-    let outcomeText = 'This is a placeholder sentence for the Outcome section.';
-    if (caseStudyType === 'docswell') {
-      outcomeText = 'This is a placeholder sentence for the Outcome section in the Docswell case study.';
-    } else if (caseStudyType === 'rememberly') {
-      outcomeText = 'This is a placeholder sentence for the Outcome section in the Rememberly case study.';
-    } else if (caseStudyType === 'jiffyhive') {
-      outcomeText = 'This is a placeholder sentence for the Outcome section in the Jiffyhive case study.';
+    // Set outcome text based on case study data or placeholders
+    if (data.outcome) {
+      document.getElementById('case-study-outcome-text').innerHTML =
+        data.outcome;
+    } else {
+      let outcomeText =
+        'This is a placeholder sentence for the Outcome section.';
+      if (caseStudyType === 'rememberly') {
+        outcomeText =
+          'This is a placeholder sentence for the Outcome section in the Rememberly case study.';
+      } else if (caseStudyType === 'jiffyhive') {
+        outcomeText =
+          'This is a placeholder sentence for the Outcome section in the Jiffyhive case study.';
+      }
+      document.getElementById('case-study-outcome-text').textContent =
+        outcomeText;
     }
-    document.getElementById('case-study-outcome-text').textContent = outcomeText;
 
     // Show and populate Solution section for all case studies
     const solutionSection = document.getElementById(

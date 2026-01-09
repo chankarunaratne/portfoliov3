@@ -1223,7 +1223,18 @@ body {
   margin: 0;
 }
 
+.case-study-section-text ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-top: 8px;
+}
+
+.case-study-section-text li {
+  margin-bottom: 8px;
+}
+
 .case-study-section-text p:last-child,
+.case-study-section-text ul:last-child,
 .case-study-description p:last-child {
   margin-bottom: 0 !important;
 }
