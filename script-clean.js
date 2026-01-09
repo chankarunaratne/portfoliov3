@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
         <p style="margin-bottom: 16px;">When I joined the company, an early MVP design was already in place, but the business was shifting its strategy to focus on therapist led medical practices. With new functional requirements and limitations in the current experience, the team decided to revamp both the practitioner and patient portals to prepare the platoform for the first public release.</p>
 
-        <p style="margin-bottom: 16px;">I worked as the sole product designer, partnering closely with the founders and engineering team to lead the end-to-end design process, from discovery and user research to high-fidelity prototyping and developer handoff.</p>
+        <p style="margin-bottom: 16px;">I was the sole designer on the team and wore multiple hats. I led user research, design system, and end-to-end UI design. I also played a pivotal role in product decisions while collaborating closely with the Founder and COO.</p>
         
         <div class="case-study-images">
           <img src="assets/docswell-exports/docswell-export-dashboard.png" alt="Docswell dashboard" class="case-study-image" data-image-popup="assets/docswell-exports/docswell-export-dashboard.png" />

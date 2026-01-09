@@ -1210,7 +1210,7 @@ body {
   font-weight: 400;
   line-height: 26px;
   color: var(--text-muted);
-  margin: 0;
+  margin: 4px 0 0 0;
 }
 
 .case-study-section-text {
@@ -1221,6 +1221,11 @@ body {
   line-height: 26px;
   color: var(--text-normal);
   margin: 0;
+}
+
+.case-study-section-text p:last-child,
+.case-study-description p:last-child {
+  margin-bottom: 0 !important;
 }
 
 .case-study-divider {
