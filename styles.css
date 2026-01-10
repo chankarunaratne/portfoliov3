@@ -1038,7 +1038,7 @@ body {
 
 .case-study-modal-content {
   position: relative;
-  width: 656px;
+  width: 640px;
   max-width: 90%;
   background: #fefefe;
   border-radius: 32px;
@@ -2415,19 +2415,16 @@ img.card-logo {
   .case-study-body-heading {
     font-size: 16px !important;
     line-height: 28px !important;
-    color: var(--text-muted) !important;
   }
 
   .case-study-section-text {
     font-size: 16px !important;
     line-height: 28px !important;
-    color: var(--text-normal) !important;
   }
 
   .case-study-description {
     font-size: 16px !important;
     line-height: 28px !important;
-    color: var(--text-normal) !important;
   }
 
   .case-study-featured-image {
