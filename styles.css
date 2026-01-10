@@ -330,18 +330,25 @@ body {
   }
 }
 
-/* White content container that matches hero width + top radius and starts in same vertical spot */
+/* About: readable white frosted panel (keeps glass border + blur, but uses a white surface for lots of text) */
 .about-panel {
   margin: 0 auto;
   width: 720px;
   max-width: 90%;
-  /* Match hero frosted glass styling (About-only card) */
-  background: rgba(255, 255, 255, 0.035);
-  border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* White surface with translucency so the blur still reads as "frosted" */
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.84) 100%
+    );
+  /* Only round the top corners so the panel feels like it continues past the fold */
+  border-radius: 32px 32px 0 0;
+  /* Glassy border + subtle inner highlight */
+  border: 1px solid rgba(255, 255, 255, 0.58);
   backdrop-filter: saturate(120%) blur(26px);
   -webkit-backdrop-filter: saturate(120%) blur(26px);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 14px 40px rgba(16, 24, 40, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -385,8 +392,9 @@ body {
       rgba(255, 255, 255, 0.02) 32%,
       rgba(255, 255, 255, 0) 55%
     );
-  mix-blend-mode: screen;
-  opacity: 0.9;
+  /* Keep a hint of "glass sheen" without overpowering the white surface */
+  mix-blend-mode: normal;
+  opacity: 0.28;
   filter: blur(1.5px);
   transform-origin: top right;
   animation: heroFlareDrift 26s ease-in-out infinite alternate;
@@ -414,7 +422,7 @@ body {
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
-  color: #fff;
+  color: var(--text-muted);
   margin: 0 0 12px 0;
   letter-spacing: -0.01em;
 }
@@ -425,7 +433,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-normal);
   margin: 0;
 }
 
@@ -2187,14 +2195,25 @@ img.card-logo {
 
   /* About: match hero mobile behavior (no glare; slightly adjusted glass tuning) */
   .about-panel {
-    background: rgba(255, 255, 255, 0.045) !important;
-    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.94) 0%,
+        rgba(255, 255, 255, 0.86) 100%
+      ) !important;
+    border: 1px solid rgba(255, 255, 255, 0.62) !important;
     backdrop-filter: saturate(120%) blur(22px) !important;
     -webkit-backdrop-filter: saturate(120%) blur(22px) !important;
+    box-shadow: 0 14px 40px rgba(16, 24, 40, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65) !important;
   }
 
   .about-panel::before {
     display: none !important;
+  }
+
+  /* About: mobile-only inner padding adjustments for readability */
+  .about-panel-inner {
+    padding: 24px 20px 48px 20px !important;
   }
 
   .video-intro {
