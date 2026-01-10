@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Sequential spring blur animation system
   const elementsToAnimate = [
     { selector: '.navbar', delay: 300 },
+    // About page: animate the panel with the same system (no effect on home)
+    { selector: '.about-panel', delay: 500 },
     { selector: '.hero', delay: 500 },
     { selector: '.video-intro', delay: 700 },
     { selector: '.case-studies', delay: 900 },

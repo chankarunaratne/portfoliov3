@@ -151,6 +151,7 @@ body {
 
 /* Initial state - all sections hidden by default */
 .navbar,
+.about-panel,
 .hero,
 .video-intro,
 .case-studies,
@@ -271,10 +272,22 @@ body {
   overflow: hidden;
 }
 
+/* About: ensure the content panel is always above sky + glare layers */
+.about-page .intro-stack {
+  z-index: 1; /* create a clear stacking context above background layers */
+}
+
+.about-page .about-panel {
+  z-index: 2; /* keep the panel above any intro-stack overlays */
+}
+
 /* Keep the sky fixed on About since the body itself doesn't scroll */
 .about-page #skyCanvas {
   position: fixed;
   height: 100svh;
+  /* About doesn't scroll like the homepage, so don't fade the sky out to white */
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 @supports (height: 100dvh) {
@@ -322,12 +335,21 @@ body {
   margin: 0 auto;
   width: 720px;
   max-width: 90%;
-  background: #ffffff;
-  border-radius: 32px 32px 0 0; /* match hero top corners */
-  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.16);
+  /* Match hero frosted glass styling (About-only card) */
+  background: rgba(255, 255, 255, 0.035);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: saturate(120%) blur(26px);
+  -webkit-backdrop-filter: saturate(120%) blur(26px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative; /* needed for lens flare overlay */
+  /* Force Safari to respect border-radius clipping for animated children */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+  isolation: isolate;
   /* Fill the rest of the viewport under the navbar */
   height: calc(100vh - var(--navbar-height, 0px));
 }
@@ -336,6 +358,39 @@ body {
   .about-panel {
     height: calc(100dvh - var(--navbar-height, 0px));
   }
+}
+
+/* About panel lens flare overlay - same as hero glass reflection */
+.about-panel::before {
+  content: '';
+  position: absolute;
+  inset: -40% -10% 10% 40%;
+  pointer-events: none;
+  background-image: radial-gradient(
+      circle at 110% -10%,
+      rgba(255, 255, 255, 0.75) 0%,
+      rgba(255, 255, 255, 0.45) 8%,
+      rgba(255, 255, 255, 0.12) 18%,
+      rgba(255, 255, 255, 0) 40%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(203, 221, 255, 0.55) 0%,
+      rgba(203, 221, 255, 0.08) 18%,
+      rgba(203, 221, 255, 0) 40%
+    ),
+    linear-gradient(
+      225deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.02) 32%,
+      rgba(255, 255, 255, 0) 55%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  filter: blur(1.5px);
+  transform-origin: top right;
+  animation: heroFlareDrift 26s ease-in-out infinite alternate;
+  z-index: 0;
 }
 
 .about-panel-scroll {
@@ -349,6 +404,8 @@ body {
 
 .about-panel-inner {
   padding: 35px 32px 48px 32px; /* align with hero padding, plus a bit more bottom */
+  position: relative;
+  z-index: 1; /* ensure text sits above the flare */
 }
 
 .about-title {
@@ -357,7 +414,7 @@ body {
   font-size: 24px;
   font-weight: 500;
   line-height: 32px;
-  color: var(--text-muted);
+  color: #fff;
   margin: 0 0 12px 0;
   letter-spacing: -0.01em;
 }
@@ -368,7 +425,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
-  color: var(--text-normal);
+  color: rgba(255, 255, 255, 0.8);
   margin: 0;
 }
 
@@ -592,6 +649,7 @@ body {
   mask-image: radial-gradient(white, black);
   isolation: isolate;
 }
+
 
 .hero-content {
   padding: 35px 32px;
@@ -2124,6 +2182,18 @@ img.card-logo {
   }
 
   .intro-stack::after {
+    display: none !important;
+  }
+
+  /* About: match hero mobile behavior (no glare; slightly adjusted glass tuning) */
+  .about-panel {
+    background: rgba(255, 255, 255, 0.045) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    backdrop-filter: saturate(120%) blur(22px) !important;
+    -webkit-backdrop-filter: saturate(120%) blur(22px) !important;
+  }
+
+  .about-panel::before {
     display: none !important;
   }
 
